@@ -6,8 +6,11 @@ export const GuildOnboarding = {
             "description": "ID of the guild this onboarding is part of"
         },
         "prompts": {
-            "type": "unknown",
-            "description": "Prompts shown during onboarding and in customize community"
+            "type": "array",
+            "description": "Prompts shown during onboarding and in customize community",
+            "items": {
+                "type": "object"
+            }
         },
         "default_channel_ids": {
             "type": "array",

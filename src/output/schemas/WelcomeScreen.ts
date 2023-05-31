@@ -6,8 +6,11 @@ export const WelcomeScreen = {
             "description": "the server description shown in the welcome screen"
         },
         "welcome_channels": {
-            "type": "unknown",
-            "description": "the channels shown in the welcome screen, up to 5"
+            "type": "array",
+            "description": "the channels shown in the welcome screen, up to 5",
+            "items": {
+                "type": "object"
+            }
         }
     },
     "required": [

@@ -14,12 +14,18 @@ export const GuildWidget = {
             "description": "instant invite for the guilds specified widget invite channel"
         },
         "channels": {
-            "$ref": "#/components/schemas/Channel",
-            "description": "voice and stage channels which are accessible by @everyone"
+            "type": "array",
+            "description": "voice and stage channels which are accessible by @everyone",
+            "items": {
+                "$ref": "#/components/schemas/Channel"
+            }
         },
         "members": {
-            "$ref": "#/components/schemas/User",
-            "description": "special widget user objects that includes users presence (Limit 100)"
+            "type": "array",
+            "description": "special widget user objects that includes users presence (Limit 100)",
+            "items": {
+                "$ref": "#/components/schemas/User"
+            }
         },
         "presence_count": {
             "type": "integer",

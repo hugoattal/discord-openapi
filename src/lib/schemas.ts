@@ -22,6 +22,14 @@ export function markdownToSchema(markdown: string) {
             }
         }
 
+        if (!obj.field) {
+            return;
+        }
+
+        if (obj.field === "user_ids") {
+            console.log(obj);
+        }
+
         if (obj.field.includes("deprecated")) {
             return;
         }
@@ -39,31 +47,81 @@ export function markdownToSchema(markdown: string) {
             //obj.format = "snowflake";
         }
 
-        if (obj.type === "ISO8601 timestamp") {
+        if (obj.type === "ISO8601 timestamp" || obj.type === "date") {
             obj.type = "string";
             obj.format = "date-time";
+        }
+
+        if (obj.type === "array") {
+            const match = obj.description?.match(/#DOCS_[\w_]+\/([\w-]+)/);
+            if (!match) {
+                return;
+            }
+            const type = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
+            obj.items = {
+                $ref: `#/components/schemas/${ type }`
+            };
         }
 
         if (obj.type.match(/#DOCS_/)) {
             const match = obj.type.match(/#DOCS_[\w_]+\/([\w-]+)/);
             if (match[1].endsWith("-object")) {
-                obj.$ref = `#/components/schemas/${ _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "") }`;
-                delete obj.type;
+                let type = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
+
+                ["DataModels", "Setcertifieddevices", "Setuservoicesettings", "Getvoicesettings", "Ready"].forEach(prefix => {
+                    if (type.startsWith(prefix)) {
+                        type = type.slice(prefix.length);
+                    }
+                });
+
+                if (obj.type.startsWith("array of ")) {
+                    obj.type = "array";
+                    obj.items = {
+                        $ref: `#/components/schemas/${ type }`
+                    };
+                }
+                else {
+                    obj.$ref = `#/components/schemas/${ type }`;
+                    delete obj.type;
+                }
             }
             else {
-                obj.type = "unknown";
+                if (obj.type.startsWith("array of ")) {
+                    obj.type = "array";
+                    obj.items = {
+                        type: "object"
+                    };
+                }
+                else {
+                    obj.type = "object";
+                }
             }
         }
 
-        if (obj.type?.startsWith("array of ")) {
+        if (obj.type?.includes("array of ")) {
+
             obj.items = {
-                type: obj.type.slice("array of ".length, -1)
+                type: obj.type.match(/array of ([\w ]+)/)[1].toLowerCase()
             };
             obj.type = "array";
+
+            // Todo "snowflake or array of snowflakes"
+
+            if (obj.items.type.endsWith("s")) {
+                obj.items.type = obj.items.type.slice(0, -1);
+            }
 
             if (obj.items.type === "snowflake") {
                 obj.items.type = "string";
                 //obj.items.format = "snowflake";
+            }
+
+            if (obj.items.type === "allowed mention type") {
+                obj.items.type = "string";
+            }
+
+            if (obj.items.type.includes("integer")) {
+                obj.items.type = "integer";
             }
         }
 
@@ -84,6 +142,34 @@ export function markdownToSchema(markdown: string) {
             obj.type = obj.type.split(" ")[0].toLowerCase();
         }
 
+        if (obj.type === "mixed") {
+            obj.type = "object";
+        }
+
+        if (["int", "single", "unsigned"].includes(obj.type)) {
+            obj.type = "integer";
+        }
+
+        if (obj.type === "float") {
+            obj.type = "number";
+        }
+
+        if (obj.type === "enum") {
+            obj.type = "object";
+        }
+
+        if (obj.type === "null") {
+            obj.type = "boolean";
+        }
+
+        if (["file", "binary"].includes(obj.type)) {
+            return;
+        }
+
+        if (typeof obj.type === "string") {
+            obj.type = obj.type.match(/([a-z]+)/)[1];
+        }
+
         properties[obj.field] = _.pickBy({
             type: obj.type,
             $ref: obj.$ref,
@@ -93,9 +179,15 @@ export function markdownToSchema(markdown: string) {
         }, _.identity);
     });
 
-    return {
+    const schema = {
         type: "object",
         properties,
         required
     };
+
+    if (required.length === 0) {
+        delete schema.required;
+    }
+
+    return schema;
 }

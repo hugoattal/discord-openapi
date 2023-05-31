@@ -17,6 +17,5 @@ export const EmbedVideo = {
             "type": "integer",
             "description": "width of video"
         }
-    },
-    "required": []
+    }
 };

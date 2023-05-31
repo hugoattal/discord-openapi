@@ -30,7 +30,7 @@ export const Integration = {
             "description": "whether emoticons should be synced for this integration (twitch only currently)"
         },
         "expire_behavior ": {
-            "type": "unknown",
+            "type": "object",
             "description": "the behavior of expiring subscribers"
         },
         "expire_grace_period ": {
@@ -63,8 +63,11 @@ export const Integration = {
             "description": "The bot/OAuth2 application for discord integrations"
         },
         "scopes": {
-            "type": "unknown",
-            "description": "the scopes the application has been authorized for"
+            "type": "array",
+            "description": "the scopes the application has been authorized for",
+            "items": {
+                "type": "object"
+            }
         }
     },
     "required": [

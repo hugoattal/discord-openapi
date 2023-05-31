@@ -6,8 +6,11 @@ export const AuditLogEntry = {
             "description": "ID of the affected entity (webhook, user, role, etc.)"
         },
         "changes": {
-            "$ref": "#/components/schemas/AuditLogChange",
-            "description": "Changes made to the target_id"
+            "type": "array",
+            "description": "Changes made to the target_id",
+            "items": {
+                "$ref": "#/components/schemas/AuditLogChange"
+            }
         },
         "user_id": {
             "type": "string",
@@ -18,11 +21,11 @@ export const AuditLogEntry = {
             "description": "ID of the entry"
         },
         "action_type": {
-            "type": "unknown",
+            "type": "object",
             "description": "Type of action that occurred"
         },
         "options": {
-            "type": "unknown",
+            "type": "object",
             "description": "Additional info for certain event types"
         },
         "reason": {

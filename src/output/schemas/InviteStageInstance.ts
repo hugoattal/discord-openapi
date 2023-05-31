@@ -2,8 +2,11 @@ export const InviteStageInstance = {
     "type": "object",
     "properties": {
         "members": {
-            "$ref": "#/components/schemas/GuildMember",
-            "description": "the members speaking in the Stage"
+            "type": "array",
+            "description": "the members speaking in the Stage",
+            "items": {
+                "$ref": "#/components/schemas/GuildMember"
+            }
         },
         "participant_count": {
             "type": "integer",

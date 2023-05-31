@@ -22,12 +22,18 @@ export const GuildPreview = {
             "description": "[discovery splash hash](#DOCS_REFERENCE/image-formatting)"
         },
         "emojis": {
-            "$ref": "#/components/schemas/Emoji",
-            "description": "custom guild emojis"
+            "type": "array",
+            "description": "custom guild emojis",
+            "items": {
+                "$ref": "#/components/schemas/Emoji"
+            }
         },
         "features": {
-            "type": "unknown",
-            "description": "enabled guild features"
+            "type": "array",
+            "description": "enabled guild features",
+            "items": {
+                "type": "object"
+            }
         },
         "approximate_member_count": {
             "type": "integer",
@@ -42,8 +48,11 @@ export const GuildPreview = {
             "description": "the description for the guild"
         },
         "stickers": {
-            "$ref": "#/components/schemas/Sticker",
-            "description": "custom guild stickers"
+            "type": "array",
+            "description": "custom guild stickers",
+            "items": {
+                "$ref": "#/components/schemas/Sticker"
+            }
         }
     },
     "required": [

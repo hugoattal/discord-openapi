@@ -70,16 +70,25 @@ export const Guild = {
             "description": "[explicit content filter level](#DOCS_RESOURCES_GUILD/guild-object-explicit-content-filter-level)"
         },
         "roles": {
-            "$ref": "#/components/schemas/Role",
-            "description": "roles in the guild"
+            "type": "array",
+            "description": "roles in the guild",
+            "items": {
+                "$ref": "#/components/schemas/Role"
+            }
         },
         "emojis": {
-            "$ref": "#/components/schemas/Emoji",
-            "description": "custom guild emojis"
+            "type": "array",
+            "description": "custom guild emojis",
+            "items": {
+                "$ref": "#/components/schemas/Emoji"
+            }
         },
         "features": {
-            "type": "unknown",
-            "description": "enabled guild features"
+            "type": "array",
+            "description": "enabled guild features",
+            "items": {
+                "type": "object"
+            }
         },
         "mfa_level": {
             "type": "integer",
@@ -162,8 +171,11 @@ export const Guild = {
             "description": "[guild NSFW level](#DOCS_RESOURCES_GUILD/guild-object-guild-nsfw-level)"
         },
         "stickers": {
-            "$ref": "#/components/schemas/Sticker",
-            "description": "custom guild stickers"
+            "type": "array",
+            "description": "custom guild stickers",
+            "items": {
+                "$ref": "#/components/schemas/Sticker"
+            }
         },
         "premium_progress_bar_enabled": {
             "type": "boolean",

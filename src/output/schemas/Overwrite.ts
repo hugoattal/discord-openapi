@@ -6,7 +6,7 @@ export const Overwrite = {
             "description": "role or user id"
         },
         "type": {
-            "type": "int",
+            "type": "integer",
             "description": "either 0 (role) or 1 (member)"
         },
         "allow": {

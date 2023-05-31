@@ -42,7 +42,7 @@ export const Attachment = {
             "description": "whether this attachment is ephemeral"
         },
         "duration_secs": {
-            "type": "float",
+            "type": "number",
             "description": "the duration of the audio file (currently for voice messages)"
         },
         "waveform": {

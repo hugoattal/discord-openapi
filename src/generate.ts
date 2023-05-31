@@ -3,13 +3,17 @@ import { markdownToSchema } from "@/lib/schemas";
 import { markdownToPath } from "@/lib/paths";
 
 export function generate() {
-    const resourcesFiles = fs.readdirSync("./src/api/discord/docs/resources");
+    const resourcesFiles = fs.readdirSync("./src/api/discord/docs/resources").map((file) => `./src/api/discord/docs/resources/${ file }`);
+    const topicFiles = fs.readdirSync("./src/api/discord/docs/topics").map((file) => `./src/api/discord/docs/topics/${ file }`);
+    const interactionFiles = fs.readdirSync("./src/api/discord/docs/interactions").map((file) => `./src/api/discord/docs/interactions/${ file }`);
+    const files = [...resourcesFiles, ...topicFiles, ...interactionFiles];
+
     fs.mkdirSync("./src/output/schemas", { recursive: true });
     const paths: Record<string, any> = {};
     const schemas: Record<string, any> = {};
 
-    for (const resourceFile of resourcesFiles) {
-        const resourceMarkdown = fs.readFileSync(`./src/api/discord/docs/resources/${ resourceFile }`, "utf8");
+    for (const file of files) {
+        const resourceMarkdown = fs.readFileSync(file, "utf8");
         const lines = resourceMarkdown.split("\n");
 
         let lineIndex = 0;
@@ -17,11 +21,20 @@ export function generate() {
         while (lineIndex < lines.length) {
             const line = lines[lineIndex].trim();
 
-            if (line.startsWith("#") && line.endsWith("Structure")) {
-                const structureName = line.match(/# ([\w ]+) Structure/)[1].replaceAll(" ", "");
+            if (line.startsWith("######") && (line.endsWith("Structure") || line.endsWith("Object") || line.endsWith("Types"))) {
+                const structureName = line.match(/# ([\w ]+) (Structure|Object|Types)/)[1].replaceAll(" ", "");
+                lineIndex++;
 
-                while (!lines[lineIndex].startsWith("|")) {
+                while (!lines[lineIndex].startsWith("|") && !lines[lineIndex].startsWith("#")) {
                     lineIndex++;
+
+                    if (lines[lineIndex] === undefined) {
+                        break;
+                    }
+                }
+
+                if (lines[lineIndex] === undefined) {
+                    continue;
                 }
 
                 let markdown = "";
@@ -61,7 +74,6 @@ export function generate() {
                 }
 
                 paths[path.endpoint][path.method] = {
-                    description: path.description,
                     operationId: path.id,
                     parameters: path.endpoint.match(/{([\w.]+)[.#A-Za-z_/-]*}/g)?.map((match) => {
                         return {
@@ -79,7 +91,8 @@ export function generate() {
                                 "application/json": {
                                     schema: path.schema
                                 }
-                            }
+                            },
+                            description: path.description || "OK"
                         }
                     }
                 };

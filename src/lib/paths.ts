@@ -18,6 +18,10 @@ export function markdownToPath(extract: {description: string; endpoint: string; 
         .filter((part) => !part.startsWith("{"))
         .join("/"));
 
+    if (endpoint === "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions") {
+        path.id = "putApplicationsGuildsCommandPermissions";
+    }
+
     path.description = extract.description.trim()
         .split("\n")
         .find((line) => line.startsWith("Returns")
@@ -45,11 +49,66 @@ export function markdownToPath(extract: {description: string; endpoint: string; 
         path.id = path.id.slice(0, -1);
     }
 
+    if (path.id === "getGateway") {
+        path.schema = {
+            type: "object",
+            properties: {
+                url: {
+                    type: "string"
+                }
+            }
+        };
+        return path;
+    }
+
+    if (path.id === "getGatewayBot") {
+        path.schema = {
+            type: "object",
+            properties: {
+                session_start_limit: {
+                    $ref: "#/components/schemas/SessionStartLimit"
+                },
+                shards: {
+                    type: "number"
+                },
+                url: {
+                    type: "string"
+                }
+            }
+        };
+        return path;
+    }
+
+    if (path.id === "postGuildsMfa") {
+        path.schema = {
+            type: "object",
+            properties: {
+                level: {
+                    type: "integer"
+                }
+            }
+        };
+        return path;
+    }
+
     const returns = extract.description.match(/Returns ([\w ]*)\[[\w ]*]\(#[A-Z_]+\/([a-z-]+)/);
 
     if (returns) {
         const type = returns[1];
-        const schema = startCase(returns[2].slice(0, -"-object".length)).replaceAll(" ", "");
+        const schemaRaw = returns[2].endsWith("-object") ? returns[2].slice(0, -"-object".length) : returns[2];
+        let schema = startCase(schemaRaw).replaceAll(" ", "");
+
+        if (schema === "ChannelObjectChannelTypes") {
+            schema = "Channel";
+        }
+
+        if (schema === "StageInstanceObjectStageInstanceStructure") {
+            schema = "StageInstance";
+        }
+
+        if (schema === "ApplicationCommandPermissionsObjectGuildApplicationCommandPermissionsStructure") {
+            schema = "GuildApplicationCommandPermissions";
+        }
 
         if (type.includes("array") || type.includes("list")) {
             path.schema = {

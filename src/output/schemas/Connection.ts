@@ -19,7 +19,10 @@ export const Connection = {
         },
         "integrations": {
             "type": "array",
-            "description": "an array of partial [server integrations](#DOCS_RESOURCES_GUILD/integration-object)"
+            "description": "an array of partial [server integrations](#DOCS_RESOURCES_GUILD/integration-object)",
+            "items": {
+                "$ref": "#/components/schemas/Integration"
+            }
         },
         "verified": {
             "type": "boolean",

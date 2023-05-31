@@ -1,11 +1,30 @@
 export const Response = {
     "type": "object",
     "properties": {
-        "sticker_packs": {
-            "$ref": "#/components/schemas/StickerPack"
+        "application": {
+            "$ref": "#/components/schemas/Application",
+            "description": "the current application"
+        },
+        "scopes": {
+            "type": "array",
+            "description": "the scopes the user has authorized the application for",
+            "items": {
+                "type": "string"
+            }
+        },
+        "expires": {
+            "type": "string",
+            "description": "when the access token expires",
+            "format": "date-time"
+        },
+        "user": {
+            "$ref": "#/components/schemas/User",
+            "description": "the user who has authorized, if the user has authorized with the `identify` scope"
         }
     },
     "required": [
-        "sticker_packs"
+        "application",
+        "scopes",
+        "expires"
     ]
 };

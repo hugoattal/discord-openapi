@@ -5,7 +5,7 @@ export const AllowedMentions = {
             "type": "array",
             "description": "An array of [allowed mention types](#DOCS_RESOURCES_CHANNEL/allowed-mentions-object-allowed-mention-types) to parse from the content.",
             "items": {
-                "type": "allowed mention type"
+                "type": "string"
             }
         },
         "roles": {

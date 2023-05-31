@@ -6,8 +6,11 @@ export const StickerPack = {
             "description": "id of the sticker pack"
         },
         "stickers": {
-            "$ref": "#/components/schemas/Sticker",
-            "description": "the stickers in the pack"
+            "type": "array",
+            "description": "the stickers in the pack",
+            "items": {
+                "$ref": "#/components/schemas/Sticker"
+            }
         },
         "name": {
             "type": "string",

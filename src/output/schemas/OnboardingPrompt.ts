@@ -6,12 +6,15 @@ export const OnboardingPrompt = {
             "description": "ID of the prompt"
         },
         "type": {
-            "type": "unknown",
+            "type": "object",
             "description": "Type of prompt"
         },
         "options": {
-            "type": "unknown",
-            "description": "Options available within the prompt"
+            "type": "array",
+            "description": "Options available within the prompt",
+            "items": {
+                "type": "object"
+            }
         },
         "title": {
             "type": "string",

@@ -9,6 +9,5 @@ export const EmbedProvider = {
             "type": "string",
             "description": "url of provider"
         }
-    },
-    "required": []
+    }
 };

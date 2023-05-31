@@ -2,36 +2,60 @@ export const AuditLog = {
     "type": "object",
     "properties": {
         "application_commands": {
-            "$ref": "#/components/schemas/ApplicationCommand",
-            "description": "List of application commands referenced in the audit log"
+            "type": "array",
+            "description": "List of application commands referenced in the audit log",
+            "items": {
+                "$ref": "#/components/schemas/ApplicationCommand"
+            }
         },
         "audit_log_entries": {
-            "$ref": "#/components/schemas/AuditLogEntry",
-            "description": "List of audit log entries, sorted from most to least recent"
+            "type": "array",
+            "description": "List of audit log entries, sorted from most to least recent",
+            "items": {
+                "$ref": "#/components/schemas/AuditLogEntry"
+            }
         },
         "auto_moderation_rules": {
-            "$ref": "#/components/schemas/AutoModerationRule",
-            "description": "List of auto moderation rules referenced in the audit log"
+            "type": "array",
+            "description": "List of auto moderation rules referenced in the audit log",
+            "items": {
+                "$ref": "#/components/schemas/AutoModerationRule"
+            }
         },
         "guild_scheduled_events": {
-            "$ref": "#/components/schemas/GuildScheduledEvent",
-            "description": "List of guild scheduled events referenced in the audit log"
+            "type": "array",
+            "description": "List of guild scheduled events referenced in the audit log",
+            "items": {
+                "$ref": "#/components/schemas/GuildScheduledEvent"
+            }
         },
         "integrations": {
-            "$ref": "#/components/schemas/Integration",
-            "description": "List of partial integration objects"
+            "type": "array",
+            "description": "List of partial integration objects",
+            "items": {
+                "$ref": "#/components/schemas/Integration"
+            }
         },
         "threads": {
-            "$ref": "#/components/schemas/Channel",
-            "description": "List of threads referenced in the audit log\\*"
+            "type": "array",
+            "description": "List of threads referenced in the audit log\\*",
+            "items": {
+                "$ref": "#/components/schemas/Channel"
+            }
         },
         "users": {
-            "$ref": "#/components/schemas/User",
-            "description": "List of users referenced in the audit log"
+            "type": "array",
+            "description": "List of users referenced in the audit log",
+            "items": {
+                "$ref": "#/components/schemas/User"
+            }
         },
         "webhooks": {
-            "$ref": "#/components/schemas/Webhook",
-            "description": "List of webhooks referenced in the audit log"
+            "type": "array",
+            "description": "List of webhooks referenced in the audit log",
+            "items": {
+                "$ref": "#/components/schemas/Webhook"
+            }
         }
     },
     "required": [
