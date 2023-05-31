@@ -6,6 +6,7 @@ export function generate() {
     const resourcesFiles = fs.readdirSync("./src/api/discord/docs/resources");
     fs.mkdirSync("./src/output/schemas", { recursive: true });
     const paths: Record<string, any> = {};
+    const schemas: Record<string, any> = {};
 
     for (const resourceFile of resourcesFiles) {
         const resourceMarkdown = fs.readFileSync(`./src/api/discord/docs/resources/${ resourceFile }`, "utf8");
@@ -30,8 +31,10 @@ export function generate() {
                     lineIndex++;
                 }
 
+                schemas[structureName] = markdownToSchema(markdown);
+
                 fs.writeFileSync(`./src/output/schemas/${ structureName }.ts`,
-                    `export const ${ structureName } = ${ JSON.stringify(markdownToSchema(markdown), null, 4) };\n`
+                    `export const ${ structureName } = ${ JSON.stringify(schemas[structureName], null, 4) };\n`
                 );
             }
 
@@ -87,4 +90,19 @@ export function generate() {
     }
 
     fs.writeFileSync("./src/output/paths.ts", `export const paths = ${ JSON.stringify(paths, null, 4) };\n`);
+
+    const openApi = {
+        components: {
+            schemas
+        },
+        info: {
+            title: "Discord API",
+            version: "10.0.0"
+        },
+        openapi: "3.0.0",
+        paths,
+        servers: [{ url: "https://discord.com/api/v10" }]
+    };
+
+    fs.writeFileSync("./src/output/openapi.json", JSON.stringify(openApi, null, 4));
 }
