@@ -3,7 +3,7 @@ import { markdownToJSONObject } from "@/lib/markdown";
 
 export function generate() {
     const resourcesFiles = fs.readdirSync("./src/api/discord/docs/resources");
-    fs.mkdirSync("./src/output/components", { recursive: true });
+    fs.mkdirSync("./src/output/schemas", { recursive: true });
 
     for (const resourceFile of resourcesFiles) {
         const resourceMarkdown = fs.readFileSync(`./src/api/discord/docs/resources/${ resourceFile }`, "utf8");
@@ -28,8 +28,8 @@ export function generate() {
                     lineIndex++;
                 }
 
-                fs.writeFileSync(`./src/output/components/${ structureName }.ts`,
-                    `export const ${ structureName } = ${ JSON.stringify(markdownToJSONObject(markdown), null, 4) }`
+                fs.writeFileSync(`./src/output/schemas/${ structureName }.ts`,
+                    `export const ${ structureName } = ${ JSON.stringify(markdownToJSONObject(markdown), null, 4) };\n`
                 );
             }
 
