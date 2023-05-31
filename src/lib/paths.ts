@@ -1,4 +1,5 @@
 import { snakeCase, startCase, camelCase } from "lodash";
+import { markdownToSchema } from "@/lib/schemas";
 
 export function markdownToPath(extract: {description: string; endpoint: string; method: string}) {
     const endpoint = extract.endpoint.replaceAll(/{([\w.]+)[.#A-Za-z_/-]*}/g, (match, p1) => `{${ snakeCase(p1) }}`);
@@ -49,6 +50,23 @@ export function markdownToPath(extract: {description: string; endpoint: string; 
             || line.startsWith("Edit")
             || line.startsWith("Delete"))
         ?.replaceAll(/\[([\w` ]+)]\([a-zA-Z#_/-]+\)/g, "$1");
+
+    if (extract.description.includes("# JSON Params")) {
+        const lines = extract.description.trim().split("\n");
+        let index = lines.findLastIndex((line) => line.includes("# JSON Params"));
+        let markdown = "";
+
+        while (!lines[index].startsWith("|")) {
+            index++;
+        }
+
+        while (lines[index]?.startsWith("|")) {
+            markdown += `${ lines[index] }\n`;
+            index++;
+        }
+
+        path.requestBody = markdownToSchema(markdown);
+    }
 
     if (!path.description) {
         delete path.description;

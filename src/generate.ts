@@ -105,6 +105,17 @@ export function generate() {
                         }
                     }
                 };
+
+                if (path.requestBody) {
+                    paths[path.endpoint][path.method].requestBody = {
+                        content: {
+                            "application/json": {
+                                schema: path.requestBody
+                            }
+                        },
+                        required: true
+                    };
+                }
             }
 
             lineIndex++;

@@ -5,7 +5,7 @@ export const MessageReference = {
             "type": "string",
             "description": "id of the originating message"
         },
-        "channel_id ": {
+        "channel_id": {
             "type": "string",
             "description": "id of the originating message's channel"
         },
@@ -19,6 +19,6 @@ export const MessageReference = {
         }
     },
     "required": [
-        "channel_id "
+        "channel_id"
     ]
 };

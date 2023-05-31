@@ -9,11 +9,11 @@ export const GuildScheduledEvent = {
             "type": "string",
             "description": "the guild id which the scheduled event belongs to"
         },
-        "channel_id **": {
+        "channel_id": {
             "type": "string",
             "description": "the channel id in which the scheduled event will be hosted, or `null` if [scheduled entity type](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-entity-types) is `EXTERNAL`"
         },
-        "creator_id *": {
+        "creator_id": {
             "type": "string",
             "description": "the id of the user that created the scheduled event *"
         },
@@ -30,7 +30,7 @@ export const GuildScheduledEvent = {
             "description": "the time the scheduled event will start",
             "format": "date-time"
         },
-        "scheduled_end_time **": {
+        "scheduled_end_time": {
             "type": "string",
             "description": "the time the scheduled event will end, required if entity_type is `EXTERNAL`",
             "format": "date-time"
@@ -51,7 +51,7 @@ export const GuildScheduledEvent = {
             "type": "string",
             "description": "the id of an entity associated with a guild scheduled event"
         },
-        "entity_metadata **": {
+        "entity_metadata": {
             "type": "object",
             "description": "additional metadata for the guild scheduled event"
         },
@@ -71,15 +71,15 @@ export const GuildScheduledEvent = {
     "required": [
         "id",
         "guild_id",
-        "channel_id **",
-        "creator_id *",
+        "channel_id",
+        "creator_id",
         "name",
         "scheduled_start_time",
-        "scheduled_end_time **",
+        "scheduled_end_time",
         "privacy_level",
         "status",
         "entity_type",
         "entity_id",
-        "entity_metadata **"
+        "entity_metadata"
     ]
 };

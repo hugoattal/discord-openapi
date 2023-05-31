@@ -5,13 +5,13 @@ export const AutoModerationAction = {
             "type": "object",
             "description": "the type of action"
         },
-        "metadata *": {
+        "metadata": {
             "type": "object",
             "description": "additional metadata needed during execution for this specific action type"
         }
     },
     "required": [
         "type",
-        "metadata *"
+        "metadata"
     ]
 };

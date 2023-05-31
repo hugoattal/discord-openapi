@@ -14,7 +14,7 @@ export function markdownToSchema(markdown: string) {
             const key = headers[i].toLowerCase();
 
             const value = values[i];
-            if (value.startsWith("?")) {
+            if (value?.startsWith("?")) {
                 obj[key] = value.substring(1);
             }
             else {
@@ -35,8 +35,8 @@ export function markdownToSchema(markdown: string) {
         }
 
         const isOptional = obj.field.endsWith("?");
-        obj.field = obj.field.replace("?", "");
-        obj.field = obj.field.replaceAll("\\*", "");
+        obj.field = obj.field.match(/([\w -]+)/)[1].trim();
+        obj.type = obj.type.match(/([\w [\]()#/-]+)/)[1].trim();
 
         if (!isOptional) {
             required.push(obj.field);
@@ -129,7 +129,7 @@ export function markdownToSchema(markdown: string) {
             }
         }
 
-        if (obj.type?.startsWith("list of snowflakes")) {
+        if (obj.type?.startsWith("list of snowflakes") || obj.type === "dict") {
             obj.type = "array";
             obj.items = {
                 type: "string"

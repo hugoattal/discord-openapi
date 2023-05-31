@@ -37,11 +37,11 @@ export const Webhook = {
             "type": "string",
             "description": "the bot/OAuth2 application that created this webhook"
         },
-        "source_guild *": {
+        "source_guild": {
             "$ref": "#/components/schemas/Guild",
             "description": "the guild of the channel that this webhook is following (returned for Channel Follower Webhooks)"
         },
-        "source_channel *": {
+        "source_channel": {
             "$ref": "#/components/schemas/Channel",
             "description": "the channel that this webhook is following (returned for Channel Follower Webhooks)"
         },
@@ -57,7 +57,7 @@ export const Webhook = {
         "name",
         "avatar",
         "application_id",
-        "source_guild *",
-        "source_channel *"
+        "source_guild",
+        "source_channel"
     ]
 };

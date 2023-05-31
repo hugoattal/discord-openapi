@@ -392,14 +392,14 @@
                         "type": "object",
                         "description": "the type of action"
                     },
-                    "metadata *": {
+                    "metadata": {
                         "type": "object",
                         "description": "additional metadata needed during execution for this specific action type"
                     }
                 },
                 "required": [
                     "type",
-                    "metadata *"
+                    "metadata"
                 ]
             },
             "Action": {
@@ -778,7 +778,7 @@
                         "type": "string",
                         "description": "id of the originating message"
                     },
-                    "channel_id ": {
+                    "channel_id": {
                         "type": "string",
                         "description": "id of the originating message's channel"
                     },
@@ -792,7 +792,7 @@
                     }
                 },
                 "required": [
-                    "channel_id "
+                    "channel_id"
                 ]
             },
             "FollowedChannel": {
@@ -901,11 +901,11 @@
             "ThreadMember": {
                 "type": "object",
                 "properties": {
-                    "id ": {
+                    "id": {
                         "type": "string",
                         "description": "ID of the thread"
                     },
-                    "user_id ": {
+                    "user_id": {
                         "type": "string",
                         "description": "ID of the user"
                     },
@@ -918,17 +918,17 @@
                         "type": "integer",
                         "description": "Any user-thread settings, currently only used for notifications"
                     },
-                    "member  ": {
+                    "member": {
                         "$ref": "#/components/schemas/GuildMember",
                         "description": "Additional information about the user"
                     }
                 },
                 "required": [
-                    "id ",
-                    "user_id ",
+                    "id",
+                    "user_id",
                     "join_timestamp",
                     "flags",
-                    "member  "
+                    "member"
                 ]
             },
             "DefaultReaction": {
@@ -1227,7 +1227,7 @@
                         "type": "integer",
                         "description": "width of file (if image)"
                     },
-                    "ephemeral ": {
+                    "ephemeral": {
                         "type": "boolean",
                         "description": "whether this attachment is ephemeral"
                     },
@@ -1246,7 +1246,7 @@
                     "size",
                     "url",
                     "proxy_url",
-                    "ephemeral "
+                    "ephemeral"
                 ]
             },
             "ChannelMention": {
@@ -1414,7 +1414,7 @@
                         "type": "string",
                         "description": "[discovery splash hash](#DOCS_REFERENCE/image-formatting); only present for guilds with the \"DISCOVERABLE\" feature"
                     },
-                    "owner ": {
+                    "owner": {
                         "type": "boolean",
                         "description": "true if [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) is the owner of the guild"
                     },
@@ -1422,11 +1422,11 @@
                         "type": "string",
                         "description": "id of owner"
                     },
-                    "permissions ": {
+                    "permissions": {
                         "type": "string",
                         "description": "total permissions for [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) in the guild (excludes overwrites)"
                     },
-                    "region ": {
+                    "region": {
                         "type": "string",
                         "description": "[voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id for the guild (deprecated)"
                     },
@@ -1581,10 +1581,10 @@
                     "icon",
                     "splash",
                     "discovery_splash",
-                    "owner ",
+                    "owner",
                     "owner_id",
-                    "permissions ",
-                    "region ",
+                    "permissions",
+                    "region",
                     "afk_channel_id",
                     "afk_timeout",
                     "verification_level",
@@ -1825,23 +1825,23 @@
                         "type": "boolean",
                         "description": "is this integration enabled"
                     },
-                    "syncing ": {
+                    "syncing": {
                         "type": "boolean",
                         "description": "is this integration syncing"
                     },
-                    "role_id ": {
+                    "role_id": {
                         "type": "string",
                         "description": "id that this integration uses for \"subscribers\""
                     },
-                    "enable_emoticons ": {
+                    "enable_emoticons": {
                         "type": "boolean",
                         "description": "whether emoticons should be synced for this integration (twitch only currently)"
                     },
-                    "expire_behavior ": {
+                    "expire_behavior": {
                         "type": "object",
                         "description": "the behavior of expiring subscribers"
                     },
-                    "expire_grace_period ": {
+                    "expire_grace_period": {
                         "type": "integer",
                         "description": "the grace period (in days) before expiring subscribers"
                     },
@@ -1853,16 +1853,16 @@
                         "$ref": "#/components/schemas/IntegrationAccount",
                         "description": "integration account information"
                     },
-                    "synced_at ": {
+                    "synced_at": {
                         "type": "string",
                         "description": "when this integration was last synced",
                         "format": "date-time"
                     },
-                    "subscriber_count ": {
+                    "subscriber_count": {
                         "type": "integer",
                         "description": "how many subscribers this integration has"
                     },
-                    "revoked ": {
+                    "revoked": {
                         "type": "boolean",
                         "description": "has this integration been revoked"
                     },
@@ -1883,15 +1883,15 @@
                     "name",
                     "type",
                     "enabled",
-                    "syncing ",
-                    "role_id ",
-                    "enable_emoticons ",
-                    "expire_behavior ",
-                    "expire_grace_period ",
+                    "syncing",
+                    "role_id",
+                    "enable_emoticons",
+                    "expire_behavior",
+                    "expire_grace_period",
                     "account",
-                    "synced_at ",
-                    "subscriber_count ",
-                    "revoked "
+                    "synced_at",
+                    "subscriber_count",
+                    "revoked"
                 ]
             },
             "IntegrationAccount": {
@@ -2142,11 +2142,11 @@
                         "type": "string",
                         "description": "the guild id which the scheduled event belongs to"
                     },
-                    "channel_id **": {
+                    "channel_id": {
                         "type": "string",
                         "description": "the channel id in which the scheduled event will be hosted, or `null` if [scheduled entity type](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-entity-types) is `EXTERNAL`"
                     },
-                    "creator_id *": {
+                    "creator_id": {
                         "type": "string",
                         "description": "the id of the user that created the scheduled event *"
                     },
@@ -2163,7 +2163,7 @@
                         "description": "the time the scheduled event will start",
                         "format": "date-time"
                     },
-                    "scheduled_end_time **": {
+                    "scheduled_end_time": {
                         "type": "string",
                         "description": "the time the scheduled event will end, required if entity_type is `EXTERNAL`",
                         "format": "date-time"
@@ -2184,7 +2184,7 @@
                         "type": "string",
                         "description": "the id of an entity associated with a guild scheduled event"
                     },
-                    "entity_metadata **": {
+                    "entity_metadata": {
                         "type": "object",
                         "description": "additional metadata for the guild scheduled event"
                     },
@@ -2204,16 +2204,16 @@
                 "required": [
                     "id",
                     "guild_id",
-                    "channel_id **",
-                    "creator_id *",
+                    "channel_id",
+                    "creator_id",
                     "name",
                     "scheduled_start_time",
-                    "scheduled_end_time **",
+                    "scheduled_end_time",
                     "privacy_level",
                     "status",
                     "entity_type",
                     "entity_id",
-                    "entity_metadata **"
+                    "entity_metadata"
                 ]
             },
             "GuildScheduledEventEntity": {
@@ -2905,11 +2905,11 @@
                         "type": "string",
                         "description": "the bot/OAuth2 application that created this webhook"
                     },
-                    "source_guild *": {
+                    "source_guild": {
                         "$ref": "#/components/schemas/Guild",
                         "description": "the guild of the channel that this webhook is following (returned for Channel Follower Webhooks)"
                     },
-                    "source_channel *": {
+                    "source_channel": {
                         "$ref": "#/components/schemas/Channel",
                         "description": "the channel that this webhook is following (returned for Channel Follower Webhooks)"
                     },
@@ -2925,8 +2925,8 @@
                     "name",
                     "avatar",
                     "application_id",
-                    "source_guild *",
-                    "source_channel *"
+                    "source_guild",
+                    "source_channel"
                 ]
             },
             "Device": {
@@ -4471,7 +4471,7 @@
             "VoicePacket": {
                 "type": "object",
                 "properties": {
-                    "Version + Flags": {
+                    "Version": {
                         "type": "integer"
                     },
                     "Payload Type": {
@@ -4488,7 +4488,7 @@
                     }
                 },
                 "required": [
-                    "Version + Flags",
+                    "Version",
                     "Payload Type",
                     "Sequence",
                     "Timestamp",
@@ -4632,7 +4632,7 @@
                         "type": "integer",
                         "description": "For option type `STRING`, the maximum allowed length (minimum of `1`, maximum of `6000`)"
                     },
-                    "autocomplete ": {
+                    "autocomplete": {
                         "type": "boolean",
                         "description": "If autocomplete interactions are enabled for this `STRING`, `INTEGER`, or `NUMBER` type option"
                     }
@@ -4641,7 +4641,7 @@
                     "type",
                     "name",
                     "description",
-                    "autocomplete "
+                    "autocomplete"
                 ]
             },
             "ApplicationCommandOptionChoice": {
@@ -5307,6 +5307,66 @@
                         },
                         "description": "Create a new rule. Returns an auto moderation rule on success. Fires an Auto Moderation Rule Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "the rule name"
+                                    },
+                                    "event_type": {
+                                        "type": "integer",
+                                        "description": "the [event type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-event-types)"
+                                    },
+                                    "trigger_type": {
+                                        "type": "integer",
+                                        "description": "the [trigger type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-trigger-types)"
+                                    },
+                                    "trigger_metadata": {
+                                        "type": "object",
+                                        "description": "the [trigger metadata](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-trigger-metadata)"
+                                    },
+                                    "actions": {
+                                        "type": "array",
+                                        "description": "the actions which will execute when the rule is triggered",
+                                        "items": {
+                                            "$ref": "#/components/schemas/AutoModerationAction"
+                                        }
+                                    },
+                                    "enabled": {
+                                        "type": "boolean",
+                                        "description": "whether the rule is enabled (False by default)"
+                                    },
+                                    "exempt_roles": {
+                                        "type": "array",
+                                        "description": "the role ids that should not be affected by the rule (Maximum of 20)",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "exempt_channels": {
+                                        "type": "array",
+                                        "description": "the channel ids that should not be affected by the rule (Maximum of 50)",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "event_type",
+                                    "trigger_type",
+                                    "trigger_metadata",
+                                    "actions"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -5375,6 +5435,64 @@
                         },
                         "description": "Modify an existing rule. Returns an auto moderation rule on success. Fires an Auto Moderation Rule Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "the rule name"
+                                    },
+                                    "event_type": {
+                                        "type": "integer",
+                                        "description": "the [event type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-event-types)"
+                                    },
+                                    "trigger_metadata": {
+                                        "type": "object",
+                                        "description": "the [trigger metadata](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-trigger-metadata)"
+                                    },
+                                    "actions": {
+                                        "type": "array",
+                                        "description": "the actions which will execute when the rule is triggered",
+                                        "items": {
+                                            "$ref": "#/components/schemas/AutoModerationAction"
+                                        }
+                                    },
+                                    "enabled": {
+                                        "type": "boolean",
+                                        "description": "whether the rule is enabled"
+                                    },
+                                    "exempt_roles": {
+                                        "type": "array",
+                                        "description": "the role ids that should not be affected by the rule (Maximum of 20)",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "exempt_channels": {
+                                        "type": "array",
+                                        "description": "the channel ids that should not be affected by the rule (Maximum of 50)",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "event_type",
+                                    "trigger_metadata",
+                                    "actions",
+                                    "enabled",
+                                    "exempt_roles",
+                                    "exempt_channels"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -5460,6 +5578,61 @@
                         },
                         "description": "OK"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "1-100 character channel name"
+                                    },
+                                    "archived": {
+                                        "type": "boolean",
+                                        "description": "whether the thread is archived"
+                                    },
+                                    "auto_archive_duration": {
+                                        "type": "integer",
+                                        "description": "the thread will stop showing in the channel list after `auto_archive_duration` minutes of inactivity, can be set to: 60, 1440, 4320, 10080"
+                                    },
+                                    "locked": {
+                                        "type": "boolean",
+                                        "description": "whether the thread is locked; when a thread is locked, only users with MANAGE_THREADS can unarchive it"
+                                    },
+                                    "invitable": {
+                                        "type": "boolean",
+                                        "description": "whether non-moderators can add other non-moderators to a thread; only available on private threads"
+                                    },
+                                    "rate_limit_per_user": {
+                                        "type": "integer",
+                                        "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages`, `manage_thread`, or `manage_channel`, are unaffected"
+                                    },
+                                    "flags": {
+                                        "type": "integer",
+                                        "description": "[channel flags](#DOCS_RESOURCES_CHANNEL/channel-object-channel-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field); `PINNED` can only be set for threads in forum channels"
+                                    },
+                                    "applied_tags": {
+                                        "type": "array",
+                                        "description": "the IDs of the set of tags that have been applied to a thread in a `GUILD_FORUM` channel; limited to 5",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "archived",
+                                    "auto_archive_duration",
+                                    "locked",
+                                    "invitable",
+                                    "rate_limit_per_user"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -5935,6 +6108,28 @@
                         },
                         "description": "Delete multiple messages in a single request. This endpoint can only be used on guild channels and requires the `MANAGE_MESSAGES` permission. Returns a 204 empty response on success. Fires a Message Delete Bulk Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "messages": {
+                                        "type": "array",
+                                        "description": "an array of message ids to delete (2-100)",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "messages"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -5970,6 +6165,33 @@
                         },
                         "description": "Edit the channel permission overwrites for a user or role in a channel. Only usable for guild channels. Requires the `MANAGE_ROLES` permission. Only permissions your bot has in the guild or parent channel (if applicable) can be allowed/denied (unless your bot has a `MANAGE_ROLES` overwrite in the channel). Returns a 204 empty response on success. Fires a Channel Update Gateway event. For more information about permissions, see permissions.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "allow": {
+                                        "type": "string",
+                                        "description": "the bitwise value of all allowed permissions (default `\"0\"`)"
+                                    },
+                                    "deny": {
+                                        "type": "string",
+                                        "description": "the bitwise value of all disallowed permissions (default `\"0\"`)"
+                                    },
+                                    "type": {
+                                        "type": "integer",
+                                        "description": "0 for a role or 1 for a member"
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -6058,6 +6280,55 @@
                         },
                         "description": "Create a new invite object for the channel. Only usable for guild channels. Requires the `CREATE_INSTANT_INVITE` permission. All JSON parameters for this route are optional, however the request body is not. If you are not sending any fields, you still have to send an empty JSON object (`{}`). Returns an invite object. Fires an Invite Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "max_age": {
+                                        "type": "integer",
+                                        "description": "duration of invite in seconds before expiry, or 0 for never. between 0 and 604800 (7 days)"
+                                    },
+                                    "max_uses": {
+                                        "type": "integer",
+                                        "description": "max number of uses or 0 for unlimited. between 0 and 100"
+                                    },
+                                    "temporary": {
+                                        "type": "boolean",
+                                        "description": "whether this invite only grants temporary membership"
+                                    },
+                                    "unique": {
+                                        "type": "boolean",
+                                        "description": "if true, don't try to reuse a similar invite (useful for creating many unique one time use invites)"
+                                    },
+                                    "target_type": {
+                                        "type": "integer",
+                                        "description": "the [type of target](#DOCS_RESOURCES_INVITE/invite-object-invite-target-types) for this voice channel invite"
+                                    },
+                                    "target_user_id": {
+                                        "type": "string",
+                                        "description": "the id of the user whose stream to display for this invite, required if `target_type` is 1, the user must be streaming in the channel"
+                                    },
+                                    "target_application_id": {
+                                        "type": "string",
+                                        "description": "the id of the embedded application to open for this invite, required if `target_type` is 2, the application must have the `EMBEDDED` flag"
+                                    }
+                                },
+                                "required": [
+                                    "max_age",
+                                    "max_uses",
+                                    "temporary",
+                                    "unique",
+                                    "target_type",
+                                    "target_user_id",
+                                    "target_application_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -6085,6 +6356,25 @@
                         },
                         "description": "OK"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "webhook_channel_id": {
+                                        "type": "string",
+                                        "description": "id of target channel"
+                                    }
+                                },
+                                "required": [
+                                    "webhook_channel_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -6245,6 +6535,30 @@
                         },
                         "description": "Adds a recipient to a Group DM using their access token.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "access_token": {
+                                        "type": "string",
+                                        "description": "access token of a user that has granted your app the `gdm.join` scope"
+                                    },
+                                    "nick": {
+                                        "type": "string",
+                                        "description": "nickname of the user being added"
+                                    }
+                                },
+                                "required": [
+                                    "access_token",
+                                    "nick"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -6313,6 +6627,33 @@
                         },
                         "description": "Creates a new thread from an existing message. Returns a channel on success, and a 400 BAD REQUEST on invalid parameters. Fires a Thread Create and a Message Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "1-100 character channel name"
+                                    },
+                                    "auto_archive_duration": {
+                                        "type": "integer",
+                                        "description": "the thread will stop showing in the channel list after `auto_archive_duration` minutes of inactivity, can be set to: 60, 1440, 4320, 10080"
+                                    },
+                                    "rate_limit_per_user": {
+                                        "type": "integer",
+                                        "description": "amount of seconds a user has to wait before sending another message (0-21600)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -6659,6 +7000,38 @@
                         },
                         "description": "Create a new emoji for the guild. Requires the `MANAGE_GUILD_EXPRESSIONS` permission. Returns the new emoji object on success. Fires a Guild Emojis Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the emoji"
+                                    },
+                                    "image": {
+                                        "type": "object",
+                                        "description": "the 128x128 emoji image"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "description": "roles allowed to use this emoji",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "image",
+                                    "roles"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -6727,6 +7100,33 @@
                         },
                         "description": "Modify the given emoji. Requires the `MANAGE_GUILD_EXPRESSIONS` permission. Returns the updated emoji object on success. Fires a Guild Emojis Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the emoji"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "description": "roles allowed to use this emoji",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "roles"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -6777,6 +7177,75 @@
                         },
                         "description": "Create a new guild. Returns a guild object on success. Fires a Guild Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the guild (2-100 characters)"
+                                    },
+                                    "region": {
+                                        "type": "string",
+                                        "description": "[voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id (deprecated)"
+                                    },
+                                    "icon": {
+                                        "type": "object",
+                                        "description": "base64 128x128 image for the guild icon"
+                                    },
+                                    "verification_level": {
+                                        "type": "integer",
+                                        "description": "[verification level](#DOCS_RESOURCES_GUILD/guild-object-verification-level)"
+                                    },
+                                    "default_message_notifications": {
+                                        "type": "integer",
+                                        "description": "default [message notification level](#DOCS_RESOURCES_GUILD/guild-object-default-message-notification-level)"
+                                    },
+                                    "explicit_content_filter": {
+                                        "type": "integer",
+                                        "description": "[explicit content filter level](#DOCS_RESOURCES_GUILD/guild-object-explicit-content-filter-level)"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "description": "new guild roles",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Role"
+                                        }
+                                    },
+                                    "channels": {
+                                        "type": "array",
+                                        "description": "new guild's channels",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Channel"
+                                        }
+                                    },
+                                    "afk_channel_id": {
+                                        "type": "string",
+                                        "description": "id for afk channel"
+                                    },
+                                    "afk_timeout": {
+                                        "type": "integer",
+                                        "description": "afk timeout in seconds, can be set to: 60, 300, 900, 1800, 3600"
+                                    },
+                                    "system_channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel where guild notices such as welcome messages and boost events are posted"
+                                    },
+                                    "system_channel_flags": {
+                                        "type": "integer",
+                                        "description": "[system channel flags](#DOCS_RESOURCES_GUILD/guild-object-system-channel-flags)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -6829,6 +7298,128 @@
                         },
                         "description": "Modify a guild's settings. Requires the `MANAGE_GUILD` permission. Returns the updated guild object on success. Fires a Guild Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "guild name"
+                                    },
+                                    "region": {
+                                        "type": "string",
+                                        "description": "guild [voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id (deprecated)"
+                                    },
+                                    "verification_level": {
+                                        "type": "integer",
+                                        "description": "[verification level](#DOCS_RESOURCES_GUILD/guild-object-verification-level)"
+                                    },
+                                    "default_message_notifications": {
+                                        "type": "integer",
+                                        "description": "default [message notification level](#DOCS_RESOURCES_GUILD/guild-object-default-message-notification-level)"
+                                    },
+                                    "explicit_content_filter": {
+                                        "type": "integer",
+                                        "description": "[explicit content filter level](#DOCS_RESOURCES_GUILD/guild-object-explicit-content-filter-level)"
+                                    },
+                                    "afk_channel_id": {
+                                        "type": "string",
+                                        "description": "id for afk channel"
+                                    },
+                                    "afk_timeout": {
+                                        "type": "integer",
+                                        "description": "afk timeout in seconds, can be set to: 60, 300, 900, 1800, 3600"
+                                    },
+                                    "icon": {
+                                        "type": "object",
+                                        "description": "base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the server has the `ANIMATED_ICON` feature)"
+                                    },
+                                    "owner_id": {
+                                        "type": "string",
+                                        "description": "user id to transfer guild ownership to (must be owner)"
+                                    },
+                                    "splash": {
+                                        "type": "object",
+                                        "description": "base64 16:9 png/jpeg image for the guild splash (when the server has the `INVITE_SPLASH` feature)"
+                                    },
+                                    "discovery_splash": {
+                                        "type": "object",
+                                        "description": "base64 16:9 png/jpeg image for the guild discovery splash (when the server has the `DISCOVERABLE` feature)"
+                                    },
+                                    "banner": {
+                                        "type": "object",
+                                        "description": "base64 16:9 png/jpeg image for the guild banner (when the server has the `BANNER` feature; can be animated gif when the server has the `ANIMATED_BANNER` feature)"
+                                    },
+                                    "system_channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel where guild notices such as welcome messages and boost events are posted"
+                                    },
+                                    "system_channel_flags": {
+                                        "type": "integer",
+                                        "description": "[system channel flags](#DOCS_RESOURCES_GUILD/guild-object-system-channel-flags)"
+                                    },
+                                    "rules_channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel where Community guilds display rules and/or guidelines"
+                                    },
+                                    "public_updates_channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel where admins and moderators of Community guilds receive notices from Discord"
+                                    },
+                                    "preferred_locale": {
+                                        "type": "string",
+                                        "description": "the preferred [locale](#DOCS_REFERENCE/locales) of a Community guild used in server discovery and notices from Discord; defaults to \"en-US\""
+                                    },
+                                    "features": {
+                                        "type": "array",
+                                        "description": "enabled guild features",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "the description for the guild"
+                                    },
+                                    "premium_progress_bar_enabled": {
+                                        "type": "boolean",
+                                        "description": "whether the guild's boost progress bar should be enabled"
+                                    },
+                                    "safety_alerts_channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "region",
+                                    "verification_level",
+                                    "default_message_notifications",
+                                    "explicit_content_filter",
+                                    "afk_channel_id",
+                                    "afk_timeout",
+                                    "icon",
+                                    "owner_id",
+                                    "splash",
+                                    "discovery_splash",
+                                    "banner",
+                                    "system_channel_id",
+                                    "system_channel_flags",
+                                    "rules_channel_id",
+                                    "public_updates_channel_id",
+                                    "preferred_locale",
+                                    "features",
+                                    "description",
+                                    "premium_progress_bar_enabled",
+                                    "safety_alerts_channel_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -6936,6 +7527,106 @@
                         },
                         "description": "Create a new channel object for the guild. Requires the `MANAGE_CHANNELS` permission. If setting permission overwrites, only permissions your bot has in the guild can be allowed/denied. Setting `MANAGE_ROLES` permission in channels is only possible for guild administrators. Returns the new channel object on success. Fires a Channel Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "channel name (1-100 characters)"
+                                    },
+                                    "type": {
+                                        "type": "integer",
+                                        "description": "the [type of channel](#DOCS_RESOURCES_CHANNEL/channel-object-channel-types)"
+                                    },
+                                    "topic": {
+                                        "type": "string",
+                                        "description": "channel topic (0-1024 characters)"
+                                    },
+                                    "bitrate": {
+                                        "type": "integer",
+                                        "description": "the bitrate (in bits) of the voice or stage channel; min 8000"
+                                    },
+                                    "user_limit": {
+                                        "type": "integer",
+                                        "description": "the user limit of the voice channel"
+                                    },
+                                    "rate_limit_per_user": {
+                                        "type": "integer",
+                                        "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected"
+                                    },
+                                    "position": {
+                                        "type": "integer",
+                                        "description": "sorting position of the channel"
+                                    },
+                                    "permission_overwrites": {
+                                        "type": "array",
+                                        "description": "the channel's permission overwrites",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Overwrite"
+                                        }
+                                    },
+                                    "parent_id": {
+                                        "type": "string",
+                                        "description": "id of the parent category for a channel"
+                                    },
+                                    "nsfw": {
+                                        "type": "boolean",
+                                        "description": "whether the channel is nsfw"
+                                    },
+                                    "rtc_region": {
+                                        "type": "string",
+                                        "description": "channel [voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id of the voice or stage channel, automatic when set to null"
+                                    },
+                                    "video_quality_mode": {
+                                        "type": "integer",
+                                        "description": "the camera [video quality mode](#DOCS_RESOURCES_CHANNEL/channel-object-video-quality-modes) of the voice channel"
+                                    },
+                                    "default_auto_archive_duration": {
+                                        "type": "integer",
+                                        "description": "the default duration that the clients use (not the API) for newly created threads in the channel, in minutes, to automatically archive the thread after recent activity"
+                                    },
+                                    "default_reaction_emoji": {
+                                        "$ref": "#/components/schemas/DefaultReaction",
+                                        "description": "emoji to show in the add reaction button on a thread in a `GUILD_FORUM` channel"
+                                    },
+                                    "available_tags": {
+                                        "type": "array",
+                                        "description": "set of tags that can be used in a `GUILD_FORUM` channel",
+                                        "items": {
+                                            "$ref": "#/components/schemas/ForumTag"
+                                        }
+                                    },
+                                    "default_sort_order": {
+                                        "type": "integer",
+                                        "description": "the [default sort order type](#DOCS_RESOURCES_CHANNEL/channel-object-sort-order-types) used to order posts in `GUILD_FORUM` channels"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "type",
+                                    "topic",
+                                    "bitrate",
+                                    "user_limit",
+                                    "rate_limit_per_user",
+                                    "position",
+                                    "permission_overwrites",
+                                    "parent_id",
+                                    "nsfw",
+                                    "rtc_region",
+                                    "video_quality_mode",
+                                    "default_auto_archive_duration",
+                                    "default_reaction_emoji",
+                                    "available_tags",
+                                    "default_sort_order"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "patch": {
@@ -6961,6 +7652,40 @@
                         },
                         "description": "Modify the positions of a set of channel objects for the guild. Requires `MANAGE_CHANNELS` permission. Returns a 204 empty response on success. Fires multiple Channel Update Gateway events.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "channel id"
+                                    },
+                                    "position": {
+                                        "type": "integer",
+                                        "description": "sorting position of the channel"
+                                    },
+                                    "lock_permissions": {
+                                        "type": "boolean",
+                                        "description": "syncs the permission overwrites with the new parent, if moving to a new category"
+                                    },
+                                    "parent_id": {
+                                        "type": "string",
+                                        "description": "the new parent ID for the channel that is moved"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "position",
+                                    "lock_permissions",
+                                    "parent_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7056,6 +7781,48 @@
                         },
                         "description": "Adds a user to the guild, provided you have a valid oauth2 access token for the user with the `guilds.join` scope. Returns a 201 Created with the guild member as the body, or 204 No Content if the user is already a member of the guild. Fires a Guild Member Add Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "access_token": {
+                                        "type": "string",
+                                        "description": "an oauth2 access token granted with the `guilds.join` to the bot's application for the user you want to add to the guild"
+                                    },
+                                    "nick": {
+                                        "type": "string",
+                                        "description": "value to set user's nickname to"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "description": "array of role ids the member is assigned",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "mute": {
+                                        "type": "boolean",
+                                        "description": "whether the user is muted in voice channels"
+                                    },
+                                    "deaf": {
+                                        "type": "boolean",
+                                        "description": "whether the user is deafened in voice channels"
+                                    }
+                                },
+                                "required": [
+                                    "access_token",
+                                    "nick",
+                                    "roles",
+                                    "mute",
+                                    "deaf"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "patch": {
@@ -7089,6 +7856,59 @@
                         },
                         "description": "Modify attributes of a guild member. Returns a 200 OK with the guild member as the body. Fires a Guild Member Update Gateway event. If the `channel_id` is set to null, this will force the target user to be disconnected from voice.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nick": {
+                                        "type": "string",
+                                        "description": "value to set user's nickname to"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "description": "array of role ids the member is assigned",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "mute": {
+                                        "type": "boolean",
+                                        "description": "whether the user is muted in voice channels. Will throw a 400 error if the user is not in a voice channel"
+                                    },
+                                    "deaf": {
+                                        "type": "boolean",
+                                        "description": "whether the user is deafened in voice channels. Will throw a 400 error if the user is not in a voice channel"
+                                    },
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "id of channel to move user to (if they are connected to voice)"
+                                    },
+                                    "communication_disabled_until": {
+                                        "type": "string",
+                                        "description": "when the user's [timeout](https://support.discord.com/hc/en-us/articles/4413305239191-Time-Out-FAQ) will expire and the user will be able to communicate in the guild again (up to 28 days in the future), set to null to remove timeout. Will throw a 403 error if the user has the ADMINISTRATOR permission or is the owner of the guild",
+                                        "format": "date-time"
+                                    },
+                                    "flags": {
+                                        "type": "integer",
+                                        "description": "[guild member flags](#DOCS_RESOURCES_GUILD/guild-member-object-guild-member-flags)"
+                                    }
+                                },
+                                "required": [
+                                    "nick",
+                                    "roles",
+                                    "mute",
+                                    "deaf",
+                                    "channel_id",
+                                    "communication_disabled_until",
+                                    "flags"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -7209,6 +8029,22 @@
                         },
                         "description": "Modifies the current member in a guild. Returns a 200 with the updated member object on success. Fires a Guild Member Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nick": {
+                                        "type": "string",
+                                        "description": "value to set user's nickname to"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7236,6 +8072,22 @@
                         },
                         "description": "Modifies the nickname of the current user in a guild. Returns a 200 with the nickname on success. Fires a Guild Member Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nick": {
+                                        "type": "string",
+                                        "description": "value to set user's nickname to"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7418,6 +8270,26 @@
                         },
                         "description": "Create a guild ban, and optionally delete previous messages sent by the banned user. Requires the `BAN_MEMBERS` permission. Returns a 204 empty response on success. Fires a Guild Ban Add Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "delete_message_days": {
+                                        "type": "integer",
+                                        "description": "number of days to delete messages for (0-7) (deprecated)"
+                                    },
+                                    "delete_message_seconds": {
+                                        "type": "integer",
+                                        "description": "number of seconds to delete messages for, between 0 and 604800 (7 days)"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -7506,6 +8378,55 @@
                         },
                         "description": "Create a new role for the guild. Requires the `MANAGE_ROLES` permission. Returns the new role object on success. Fires a Guild Role Create Gateway event. All JSON params are optional.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the role, max 100 characters"
+                                    },
+                                    "permissions": {
+                                        "type": "string",
+                                        "description": "bitwise value of the enabled/disabled permissions"
+                                    },
+                                    "color": {
+                                        "type": "integer",
+                                        "description": "RGB color value"
+                                    },
+                                    "hoist": {
+                                        "type": "boolean",
+                                        "description": "whether the role should be displayed separately in the sidebar"
+                                    },
+                                    "icon": {
+                                        "type": "object",
+                                        "description": "the role's icon image (if the guild has the `ROLE_ICONS` feature)"
+                                    },
+                                    "unicode_emoji": {
+                                        "type": "string",
+                                        "description": "the role's unicode emoji as a [standard emoji](#DOCS_REFERENCE/message-formatting) (if the guild has the `ROLE_ICONS` feature)"
+                                    },
+                                    "mentionable": {
+                                        "type": "boolean",
+                                        "description": "whether the role should be mentionable"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "permissions",
+                                    "color",
+                                    "hoist",
+                                    "icon",
+                                    "unicode_emoji",
+                                    "mentionable"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "patch": {
@@ -7531,6 +8452,29 @@
                         },
                         "description": "Modify the positions of a set of role objects for the guild. Requires the `MANAGE_ROLES` permission. Returns a list of all of the guild's role objects on success. Fires multiple Guild Role Update Gateway events.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "role"
+                                    },
+                                    "position": {
+                                        "type": "integer",
+                                        "description": "sorting position of the role"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7566,6 +8510,55 @@
                         },
                         "description": "Modify a guild role. Requires the `MANAGE_ROLES` permission. Returns the updated role on success. Fires a Guild Role Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the role, max 100 characters"
+                                    },
+                                    "permissions": {
+                                        "type": "string",
+                                        "description": "bitwise value of the enabled/disabled permissions"
+                                    },
+                                    "color": {
+                                        "type": "integer",
+                                        "description": "RGB color value"
+                                    },
+                                    "hoist": {
+                                        "type": "boolean",
+                                        "description": "whether the role should be displayed separately in the sidebar"
+                                    },
+                                    "icon": {
+                                        "type": "object",
+                                        "description": "the role's icon image (if the guild has the `ROLE_ICONS` feature)"
+                                    },
+                                    "unicode_emoji": {
+                                        "type": "string",
+                                        "description": "the role's unicode emoji as a [standard emoji](#DOCS_REFERENCE/message-formatting) (if the guild has the `ROLE_ICONS` feature)"
+                                    },
+                                    "mentionable": {
+                                        "type": "boolean",
+                                        "description": "whether the role should be mentionable"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "permissions",
+                                    "color",
+                                    "hoist",
+                                    "icon",
+                                    "unicode_emoji",
+                                    "mentionable"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -7631,6 +8624,25 @@
                         },
                         "description": "Modify a guild's MFA level. Requires guild ownership. Returns the updated level on success. Fires a Guild Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "level": {
+                                        "type": "integer",
+                                        "description": "[MFA level](#DOCS_RESOURCES_GUILD/guild-object-mfa-level)"
+                                    }
+                                },
+                                "required": [
+                                    "level"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7683,6 +8695,42 @@
                         },
                         "description": "Begin a prune operation. Requires the `KICK_MEMBERS` permission. Returns an object with one `pruned` key indicating the number of members that were removed in the prune operation. For large guilds it's recommended to set the `compute_prune_count` option to `false`, forcing `pruned` to `null`. Fires multiple Guild Member Remove Gateway events.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "days": {
+                                        "type": "integer",
+                                        "description": "number of days to prune (1-30)"
+                                    },
+                                    "compute_prune_count": {
+                                        "type": "boolean",
+                                        "description": "whether `pruned` is returned, discouraged for large guilds"
+                                    },
+                                    "include_roles": {
+                                        "type": "array",
+                                        "description": "role(s) to include",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "reason": {
+                                        "type": "string",
+                                        "description": "reason for the prune (deprecated)"
+                                    }
+                                },
+                                "required": [
+                                    "days",
+                                    "compute_prune_count",
+                                    "include_roles"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -7993,6 +9041,38 @@
                         },
                         "description": "Modify the guild's Welcome Screen. Requires the `MANAGE_GUILD` permission. Returns the updated Welcome Screen object. May fire a Guild Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "boolean",
+                                        "description": "whether the welcome screen is enabled"
+                                    },
+                                    "welcome_channels": {
+                                        "type": "array",
+                                        "description": "channels linked in the welcome screen and their display options",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "the server description to show in the welcome screen"
+                                    }
+                                },
+                                "required": [
+                                    "enabled",
+                                    "welcome_channels",
+                                    "description"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8047,6 +9127,31 @@
                         },
                         "description": "Updates the current user's voice state. Returns `204 No Content` on success. Fires a Voice State Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel the user is currently in"
+                                    },
+                                    "suppress": {
+                                        "type": "boolean",
+                                        "description": "toggles the user's suppress state"
+                                    },
+                                    "request_to_speak_timestamp": {
+                                        "type": "string",
+                                        "description": "sets the user's request to speak",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8082,6 +9187,29 @@
                         },
                         "description": "Updates another user's voice state. Fires a Voice State Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "the id of the channel the user is currently in"
+                                    },
+                                    "suppress": {
+                                        "type": "boolean",
+                                        "description": "toggles the user's suppress state"
+                                    }
+                                },
+                                "required": [
+                                    "channel_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8137,6 +9265,65 @@
                         },
                         "description": "Create a guild scheduled event in the guild. Returns a guild scheduled event object on success. Fires a Guild Scheduled Event Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "the channel id of the scheduled event."
+                                    },
+                                    "entity_metadata": {
+                                        "type": "object",
+                                        "description": "the entity metadata of the scheduled event"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "the name of the scheduled event"
+                                    },
+                                    "privacy_level": {
+                                        "type": "object",
+                                        "description": "the privacy level of the scheduled event"
+                                    },
+                                    "scheduled_start_time": {
+                                        "type": "string",
+                                        "description": "the time to schedule the scheduled event",
+                                        "format": "date-time"
+                                    },
+                                    "scheduled_end_time": {
+                                        "type": "string",
+                                        "description": "the time when the scheduled event is scheduled to end",
+                                        "format": "date-time"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "the description of the scheduled event"
+                                    },
+                                    "entity_type": {
+                                        "type": "object",
+                                        "description": "the entity type of the scheduled event"
+                                    },
+                                    "image": {
+                                        "type": "object",
+                                        "description": "the cover image of the scheduled event"
+                                    }
+                                },
+                                "required": [
+                                    "channel_id",
+                                    "entity_metadata",
+                                    "name",
+                                    "privacy_level",
+                                    "scheduled_start_time",
+                                    "scheduled_end_time",
+                                    "entity_type"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8205,6 +9392,65 @@
                         },
                         "description": "Modify a guild scheduled event. Returns the modified guild scheduled event object on success. Fires a Guild Scheduled Event Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "the channel id of the scheduled event, set to `null` if changing entity type to `EXTERNAL`"
+                                    },
+                                    "entity_metadata": {
+                                        "type": "object",
+                                        "description": "the entity metadata of the scheduled event"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "the name of the scheduled event"
+                                    },
+                                    "privacy_level": {
+                                        "type": "object",
+                                        "description": "the privacy level of the scheduled event"
+                                    },
+                                    "scheduled_start_time": {
+                                        "type": "string",
+                                        "description": "the time to schedule the scheduled event",
+                                        "format": "date-time"
+                                    },
+                                    "scheduled_end_time": {
+                                        "type": "string",
+                                        "description": "the time when the scheduled event is scheduled to end",
+                                        "format": "date-time"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "the description of the scheduled event"
+                                    },
+                                    "entity_type": {
+                                        "type": "object",
+                                        "description": "the entity type of the scheduled event"
+                                    },
+                                    "status": {
+                                        "type": "object",
+                                        "description": "the status of the scheduled event"
+                                    },
+                                    "image": {
+                                        "type": "object",
+                                        "description": "the cover image of the scheduled event"
+                                    }
+                                },
+                                "required": [
+                                    "channel_id",
+                                    "scheduled_end_time",
+                                    "entity_type"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -8303,6 +9549,29 @@
                         },
                         "description": "Create a new guild based on a template. Returns a guild object on success. Fires a Guild Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the guild (2-100 characters)"
+                                    },
+                                    "icon": {
+                                        "type": "object",
+                                        "description": "base64 128x128 image for the guild icon"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8358,6 +9627,29 @@
                         },
                         "description": "Creates a template for the guild. Requires the `MANAGE_GUILD` permission. Returns the created guild template object on success.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the template (1-100 characters)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "description for the template (0-120 characters)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8426,6 +9718,26 @@
                         },
                         "description": "Modifies the template's metadata. Requires the `MANAGE_GUILD` permission. Returns the guild template object on success.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the template (1-100 characters)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "description for the template (0-120 characters)"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -8528,6 +9840,39 @@
                         },
                         "description": "Creates a new Stage instance associated to a Stage channel. Returns that Stage instance. Fires a Stage Instance Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "The id of the Stage channel"
+                                    },
+                                    "topic": {
+                                        "type": "string",
+                                        "description": "The topic of the Stage instance (1-120 characters)"
+                                    },
+                                    "privacy_level": {
+                                        "type": "integer",
+                                        "description": "The [privacy level](#DOCS_RESOURCES_STAGE_INSTANCE/stage-instance-object-privacy-level) of the Stage instance (default GUILD_ONLY)"
+                                    },
+                                    "send_start_notification": {
+                                        "type": "boolean",
+                                        "description": "Notify @everyone that a Stage instance has started"
+                                    }
+                                },
+                                "required": [
+                                    "channel_id",
+                                    "topic",
+                                    "send_start_notification"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8580,6 +9925,26 @@
                         },
                         "description": "Updates fields of an existing Stage instance. Returns the updated Stage instance. Fires a Stage Instance Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "topic": {
+                                        "type": "string",
+                                        "description": "The topic of the Stage instance (1-120 characters)"
+                                    },
+                                    "privacy_level": {
+                                        "type": "integer",
+                                        "description": "The [privacy level](#DOCS_RESOURCES_STAGE_INSTANCE/stage-instance-object-privacy-level) of the Stage instance"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -8772,6 +10137,35 @@
                         },
                         "description": "Modify the given sticker. Requires the `MANAGE_GUILD_EXPRESSIONS` permission. Returns the updated sticker object on success. Fires a Guild Stickers Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the sticker (2-30 characters)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "description of the sticker (2-100 characters)"
+                                    },
+                                    "tags": {
+                                        "type": "string",
+                                        "description": "autocomplete/suggestion tags for the sticker (max 200 characters)"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "tags"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -8837,6 +10231,30 @@
                         },
                         "description": "Modify the requester's user account settings. Returns a user object on success. Fires a User Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "description": "user's username, if changed may cause the user's discriminator to be randomized."
+                                    },
+                                    "avatar": {
+                                        "type": "object",
+                                        "description": "if passed, modifies the user's avatar"
+                                    }
+                                },
+                                "required": [
+                                    "username",
+                                    "avatar"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -8955,6 +10373,36 @@
                         },
                         "description": "Create a new group DM channel with multiple users. Returns a DM channel object. This endpoint was intended to be used with the now-deprecated GameBridge SDK. Fires a Channel Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "access_tokens": {
+                                        "type": "array",
+                                        "description": "access tokens of users that have granted your app the `gdm.join` scope",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "nicks": {
+                                        "type": "array",
+                                        "description": "a dictionary of user ids to their respective nicknames",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "access_tokens",
+                                    "nicks"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -9027,6 +10475,30 @@
                         },
                         "description": "Updates and returns the application role connection for the user. Requires an OAuth2 access token with `role_connections.write` scope for the application specified in the path.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "platform_name": {
+                                        "type": "string",
+                                        "description": "the vanity name of the platform a bot has connected (max 50 characters)"
+                                    },
+                                    "platform_username": {
+                                        "type": "string",
+                                        "description": "the username on the platform a bot has connected (max 100 characters)"
+                                    },
+                                    "metadata": {
+                                        "type": "object",
+                                        "description": "object mapping [application role connection metadata](#DOCS_RESOURCES_APPLICATION_ROLE_CONNECTION_METADATA/application-role-connection-metadata-object) keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -9074,6 +10546,29 @@
                         },
                         "description": "Creates a new webhook and returns a webhook object on success. Requires the `MANAGE_WEBHOOKS` permission. Fires a Webhooks Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the webhook (1-80 characters)"
+                                    },
+                                    "avatar": {
+                                        "type": "object",
+                                        "description": "image for the default webhook avatar"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "get": {
@@ -9184,6 +10679,35 @@
                         },
                         "description": "Modify a webhook. Requires the `MANAGE_WEBHOOKS` permission. Returns the updated webhook object on success. Fires a Webhooks Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "the default name of the webhook"
+                                    },
+                                    "avatar": {
+                                        "type": "object",
+                                        "description": "image for the default webhook avatar"
+                                    },
+                                    "channel_id": {
+                                        "type": "string",
+                                        "description": "the new channel id this webhook should be moved to"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "avatar",
+                                    "channel_id"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -9607,6 +11131,64 @@
                         },
                         "description": "Create a new global command. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "[Name of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-naming), 1-32 characters"
+                                    },
+                                    "name_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `name` field. Values follow the same restrictions as `name`"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "1-100 character description for `CHAT_INPUT` commands"
+                                    },
+                                    "description_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `description` field. Values follow the same restrictions as `description`"
+                                    },
+                                    "options": {
+                                        "type": "array",
+                                        "description": "the parameters for the command",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "default_member_permissions": {
+                                        "type": "string",
+                                        "description": "Set of [permissions](#DOCS_TOPICS_PERMISSIONS) represented as a bit set"
+                                    },
+                                    "dm_permission": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible."
+                                    },
+                                    "default_permission": {
+                                        "type": "boolean",
+                                        "description": "Replaced by `default_member_permissions` and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to `true`"
+                                    },
+                                    "type": {
+                                        "type": "object",
+                                        "description": "Type of command, defaults `1` if not set"
+                                    },
+                                    "nsfw": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is [age-restricted](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/agerestricted-commands)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "put": {
@@ -9700,6 +11282,57 @@
                         },
                         "description": "Edit a global command. Returns `200` and an application command object. All fields are optional, but any fields provided will entirely overwrite the existing values of those fields.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "[Name of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-naming), 1-32 characters"
+                                    },
+                                    "name_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `name` field. Values follow the same restrictions as `name`"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "1-100 character description"
+                                    },
+                                    "description_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `description` field. Values follow the same restrictions as `description`"
+                                    },
+                                    "options": {
+                                        "type": "array",
+                                        "description": "the parameters for the command",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "default_member_permissions": {
+                                        "type": "string",
+                                        "description": "Set of [permissions](#DOCS_TOPICS_PERMISSIONS) represented as a bit set"
+                                    },
+                                    "dm_permission": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible."
+                                    },
+                                    "default_permission": {
+                                        "type": "boolean",
+                                        "description": "Replaced by `default_member_permissions` and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to `true`"
+                                    },
+                                    "nsfw": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is [age-restricted](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/agerestricted-commands)"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -9804,6 +11437,60 @@
                         },
                         "description": "Create a new guild command. New guild commands will be available in the guild immediately. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "[Name of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-naming), 1-32 characters"
+                                    },
+                                    "name_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `name` field. Values follow the same restrictions as `name`"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "1-100 character description for `CHAT_INPUT` commands"
+                                    },
+                                    "description_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `description` field. Values follow the same restrictions as `description`"
+                                    },
+                                    "options": {
+                                        "type": "array",
+                                        "description": "Parameters for the command",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "default_member_permissions": {
+                                        "type": "string",
+                                        "description": "Set of [permissions](#DOCS_TOPICS_PERMISSIONS) represented as a bit set"
+                                    },
+                                    "default_permission": {
+                                        "type": "boolean",
+                                        "description": "Replaced by `default_member_permissions` and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to `true`"
+                                    },
+                                    "type": {
+                                        "type": "object",
+                                        "description": "Type of command, defaults `1` if not set"
+                                    },
+                                    "nsfw": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is [age-restricted](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/agerestricted-commands)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "put": {
@@ -9921,6 +11608,53 @@
                         },
                         "description": "Edit a guild command. Updates for guild commands will be available immediately. Returns `200` and an application command object. All fields are optional, but any fields provided will entirely overwrite the existing values of those fields.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "[Name of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-naming), 1-32 characters"
+                                    },
+                                    "name_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `name` field. Values follow the same restrictions as `name`"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "1-100 character description"
+                                    },
+                                    "description_localizations": {
+                                        "type": "object",
+                                        "description": "Localization dictionary for the `description` field. Values follow the same restrictions as `description`"
+                                    },
+                                    "options": {
+                                        "type": "array",
+                                        "description": "Parameters for the command",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "default_member_permissions": {
+                                        "type": "string",
+                                        "description": "Set of [permissions](#DOCS_TOPICS_PERMISSIONS) represented as a bit set"
+                                    },
+                                    "default_permission": {
+                                        "type": "boolean",
+                                        "description": "Replaced by `default_member_permissions` and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to `true`"
+                                    },
+                                    "nsfw": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether the command is [age-restricted](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/agerestricted-commands)"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -10117,6 +11851,28 @@
                         },
                         "description": "Edits command permissions for a specific command for your application in a guild and returns a guild application command permissions object. Fires an Application Command Permissions Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "permissions": {
+                                        "type": "array",
+                                        "description": "Permissions for the command in the guild",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "permissions"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },

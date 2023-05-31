@@ -25,7 +25,7 @@ export const Guild = {
             "type": "string",
             "description": "[discovery splash hash](#DOCS_REFERENCE/image-formatting); only present for guilds with the \"DISCOVERABLE\" feature"
         },
-        "owner ": {
+        "owner": {
             "type": "boolean",
             "description": "true if [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) is the owner of the guild"
         },
@@ -33,11 +33,11 @@ export const Guild = {
             "type": "string",
             "description": "id of owner"
         },
-        "permissions ": {
+        "permissions": {
             "type": "string",
             "description": "total permissions for [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) in the guild (excludes overwrites)"
         },
-        "region ": {
+        "region": {
             "type": "string",
             "description": "[voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id for the guild (deprecated)"
         },
@@ -192,10 +192,10 @@ export const Guild = {
         "icon",
         "splash",
         "discovery_splash",
-        "owner ",
+        "owner",
         "owner_id",
-        "permissions ",
-        "region ",
+        "permissions",
+        "region",
         "afk_channel_id",
         "afk_timeout",
         "verification_level",
