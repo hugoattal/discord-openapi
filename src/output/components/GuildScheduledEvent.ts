@@ -36,15 +36,15 @@ export const GuildScheduledEvent = {
             "format": "date-time"
         },
         "privacy_level": {
-            "$ref": "Guildscheduledeventobjectguildscheduledeventprivacylevel",
+            "type": "unknown",
             "description": "the privacy level of the scheduled event"
         },
         "status": {
-            "$ref": "Guildscheduledeventobjectguildscheduledeventstatus",
+            "type": "unknown",
             "description": "the status of the scheduled event"
         },
         "entity_type": {
-            "$ref": "Guildscheduledeventobjectguildscheduledevententitytypes",
+            "type": "unknown",
             "description": "the type of the scheduled event"
         },
         "entity_id": {
@@ -52,11 +52,11 @@ export const GuildScheduledEvent = {
             "description": "the id of an entity associated with a guild scheduled event"
         },
         "entity_metadata **": {
-            "$ref": "Guildscheduledeventobjectguildscheduledevententitymetadata",
+            "type": "unknown",
             "description": "additional metadata for the guild scheduled event"
         },
         "creator": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the user that created the scheduled event"
         },
         "user_count": {

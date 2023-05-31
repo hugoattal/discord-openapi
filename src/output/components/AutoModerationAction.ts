@@ -2,11 +2,11 @@ export const AutoModerationAction = {
     "type": "object",
     "properties": {
         "type": {
-            "$ref": "Automoderationactionobjectactiontypes",
+            "type": "unknown",
             "description": "the type of action"
         },
         "metadata *": {
-            "$ref": "Automoderationactionobjectactionmetadata",
+            "type": "unknown",
             "description": "additional metadata needed during execution for this specific action type"
         }
     },

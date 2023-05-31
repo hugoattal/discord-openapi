@@ -18,7 +18,7 @@ export const IntegrationApplication = {
             "description": "the description of the app"
         },
         "bot": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the bot associated with this application"
         }
     },

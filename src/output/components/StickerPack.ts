@@ -6,7 +6,7 @@ export const StickerPack = {
             "description": "id of the sticker pack"
         },
         "stickers": {
-            "$ref": "Stickerobject",
+            "$ref": "Sticker",
             "description": "the stickers in the pack"
         },
         "name": {

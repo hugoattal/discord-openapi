@@ -2,7 +2,7 @@ export const GuildMember = {
     "type": "object",
     "properties": {
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the user this guild member represents"
         },
         "nick": {

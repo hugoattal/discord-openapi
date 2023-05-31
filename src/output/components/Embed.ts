@@ -27,31 +27,31 @@ export const Embed = {
             "description": "color code of the embed"
         },
         "footer": {
-            "$ref": "Embedobjectembedfooterstructure",
+            "type": "unknown",
             "description": "footer information"
         },
         "image": {
-            "$ref": "Embedobjectembedimagestructure",
+            "type": "unknown",
             "description": "image information"
         },
         "thumbnail": {
-            "$ref": "Embedobjectembedthumbnailstructure",
+            "type": "unknown",
             "description": "thumbnail information"
         },
         "video": {
-            "$ref": "Embedobjectembedvideostructure",
+            "type": "unknown",
             "description": "video information"
         },
         "provider": {
-            "$ref": "Embedobjectembedproviderstructure",
+            "type": "unknown",
             "description": "provider information"
         },
         "author": {
-            "$ref": "Embedobjectembedauthorstructure",
+            "type": "unknown",
             "description": "author information"
         },
         "fields": {
-            "$ref": "Embedobjectembedfieldstructure",
+            "type": "unknown",
             "description": "fields information"
         }
     },

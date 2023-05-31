@@ -70,15 +70,15 @@ export const Guild = {
             "description": "[explicit content filter level](#DOCS_RESOURCES_GUILD/guild-object-explicit-content-filter-level)"
         },
         "roles": {
-            "$ref": "Roleobject",
+            "$ref": "Role",
             "description": "roles in the guild"
         },
         "emojis": {
-            "$ref": "Emojiobject",
+            "$ref": "Emoji",
             "description": "custom guild emojis"
         },
         "features": {
-            "$ref": "Guildobjectguildfeatures",
+            "type": "unknown",
             "description": "enabled guild features"
         },
         "mfa_level": {
@@ -154,7 +154,7 @@ export const Guild = {
             "description": "approximate number of non-offline members in this guild, returned from the `GET /guilds/<id>` endpoint when `with_counts` is `true`"
         },
         "welcome_screen": {
-            "$ref": "Welcomescreenobject",
+            "$ref": "WelcomeScreen",
             "description": "the welcome screen of a Community guild, shown to new members, returned in an [Invite](#DOCS_RESOURCES_INVITE/invite-object)'s guild object"
         },
         "nsfw_level": {
@@ -162,7 +162,7 @@ export const Guild = {
             "description": "[guild NSFW level](#DOCS_RESOURCES_GUILD/guild-object-guild-nsfw-level)"
         },
         "stickers": {
-            "$ref": "Stickerobject",
+            "$ref": "Sticker",
             "description": "custom guild stickers"
         },
         "premium_progress_bar_enabled": {

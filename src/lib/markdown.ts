@@ -43,8 +43,17 @@ export function markdownToJSONObject(markdown: string): object {
         }
 
         if (obj.type.match(/#DOCS_/)) {
-            obj.$ref = _.capitalize(_.camelCase(obj.type.match(/#DOCS_[\w_]+\/([\w-]+)/)[1]));
-            delete obj.type;
+            console.log(obj.type);
+            console.log(obj.type.match(/#DOCS_[\w_]+\/([\w-]+)-object/));
+
+            const match = obj.type.match(/#DOCS_[\w_]+\/([\w-]+)/);
+            if (match[1].endsWith("-object")) {
+                obj.$ref = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
+                delete obj.type;
+            }
+            else {
+                obj.type = "unknown";
+            }
         }
 
         properties[obj.field] = _.pickBy({

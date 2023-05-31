@@ -6,11 +6,11 @@ export const OnboardingPrompt = {
             "description": "ID of the prompt"
         },
         "type": {
-            "$ref": "Guildonboardingobjectprompttypes",
+            "type": "unknown",
             "description": "Type of prompt"
         },
         "options": {
-            "$ref": "Guildonboardingobjectpromptoptionstructure",
+            "type": "unknown",
             "description": "Options available within the prompt"
         },
         "title": {

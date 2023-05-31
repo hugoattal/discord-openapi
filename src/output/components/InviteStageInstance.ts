@@ -2,7 +2,7 @@ export const InviteStageInstance = {
     "type": "object",
     "properties": {
         "members": {
-            "$ref": "Guildmemberobject",
+            "$ref": "GuildMember",
             "description": "the members speaking in the Stage"
         },
         "participant_count": {

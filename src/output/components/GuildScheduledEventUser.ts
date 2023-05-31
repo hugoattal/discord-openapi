@@ -6,11 +6,11 @@ export const GuildScheduledEventUser = {
             "description": "the scheduled event id which the user subscribed to"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "user which subscribed to an event"
         },
         "member": {
-            "$ref": "Guildmemberobject",
+            "$ref": "GuildMember",
             "description": "guild member data for this user for the guild which this event belongs to, if any"
         }
     },

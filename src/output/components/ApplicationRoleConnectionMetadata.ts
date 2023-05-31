@@ -2,7 +2,7 @@ export const ApplicationRoleConnectionMetadata = {
     "type": "object",
     "properties": {
         "type": {
-            "$ref": "Applicationroleconnectionmetadataobjectapplicationroleconnectionmetadatatype",
+            "type": "unknown",
             "description": "type of metadata value"
         },
         "key": {
@@ -14,7 +14,7 @@ export const ApplicationRoleConnectionMetadata = {
             "description": "name of the metadata field (1-100 characters)"
         },
         "name_localizations": {
-            "$ref": "Locales",
+            "type": "unknown",
             "description": "translations of the name"
         },
         "description": {
@@ -22,7 +22,7 @@ export const ApplicationRoleConnectionMetadata = {
             "description": "description of the metadata field (1-200 characters)"
         },
         "description_localizations": {
-            "$ref": "Locales",
+            "type": "unknown",
             "description": "translations of the description"
         }
     },

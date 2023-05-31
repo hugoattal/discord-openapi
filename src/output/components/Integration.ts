@@ -30,7 +30,7 @@ export const Integration = {
             "description": "whether emoticons should be synced for this integration (twitch only currently)"
         },
         "expire_behavior \\*": {
-            "$ref": "Integrationobjectintegrationexpirebehaviors",
+            "type": "unknown",
             "description": "the behavior of expiring subscribers"
         },
         "expire_grace_period \\*": {
@@ -38,11 +38,11 @@ export const Integration = {
             "description": "the grace period (in days) before expiring subscribers"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "user for this integration"
         },
         "account": {
-            "$ref": "Integrationaccountobject",
+            "$ref": "IntegrationAccount",
             "description": "integration account information"
         },
         "synced_at \\*": {
@@ -59,11 +59,11 @@ export const Integration = {
             "description": "has this integration been revoked"
         },
         "application": {
-            "$ref": "Integrationapplicationobject",
+            "$ref": "IntegrationApplication",
             "description": "The bot/OAuth2 application for discord integrations"
         },
         "scopes": {
-            "$ref": "Sharedresourcesoauth2scopes",
+            "type": "unknown",
             "description": "the scopes the application has been authorized for"
         }
     },

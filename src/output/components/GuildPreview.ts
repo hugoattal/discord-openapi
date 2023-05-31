@@ -22,11 +22,11 @@ export const GuildPreview = {
             "description": "[discovery splash hash](#DOCS_REFERENCE/image-formatting)"
         },
         "emojis": {
-            "$ref": "Emojiobject",
+            "$ref": "Emoji",
             "description": "custom guild emojis"
         },
         "features": {
-            "$ref": "Guildobjectguildfeatures",
+            "type": "unknown",
             "description": "enabled guild features"
         },
         "approximate_member_count": {
@@ -42,7 +42,7 @@ export const GuildPreview = {
             "description": "the description for the guild"
         },
         "stickers": {
-            "$ref": "Stickerobject",
+            "$ref": "Sticker",
             "description": "custom guild stickers"
         }
     },

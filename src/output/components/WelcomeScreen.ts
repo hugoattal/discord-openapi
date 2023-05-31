@@ -6,7 +6,7 @@ export const WelcomeScreen = {
             "description": "the server description shown in the welcome screen"
         },
         "welcome_channels": {
-            "$ref": "Welcomescreenobjectwelcomescreenchannelstructure",
+            "type": "unknown",
             "description": "the channels shown in the welcome screen, up to 5"
         }
     },

@@ -30,7 +30,7 @@ export const AutoModerationRule = {
             "description": "the rule [trigger metadata](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-trigger-metadata)"
         },
         "actions": {
-            "$ref": "Automoderationactionobject",
+            "$ref": "AutoModerationAction",
             "description": "the actions which will execute when the rule is triggered"
         },
         "enabled": {

@@ -42,7 +42,7 @@ export const Sticker = {
             "description": "id of the guild that owns this sticker"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the user that uploaded the guild sticker"
         },
         "sort_value": {

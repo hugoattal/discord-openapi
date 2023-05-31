@@ -6,7 +6,7 @@ export const Ban = {
             "description": "the reason for the ban"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the banned user"
         }
     },

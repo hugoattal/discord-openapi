@@ -18,7 +18,7 @@ export const Webhook = {
             "description": "the channel id this webhook is for, if any"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "the user this webhook was created by (not returned when getting a webhook with its token)"
         },
         "name": {
@@ -38,11 +38,11 @@ export const Webhook = {
             "description": "the bot/OAuth2 application that created this webhook"
         },
         "source_guild *": {
-            "$ref": "Guildobject",
+            "$ref": "Guild",
             "description": "the guild of the channel that this webhook is following (returned for Channel Follower Webhooks)"
         },
         "source_channel *": {
-            "$ref": "Channelobject",
+            "$ref": "Channel",
             "description": "the channel that this webhook is following (returned for Channel Follower Webhooks)"
         },
         "url": {

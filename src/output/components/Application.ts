@@ -38,7 +38,7 @@ export const Application = {
             "description": "the url of the app's privacy policy"
         },
         "owner": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "partial user object containing info on the owner of the application"
         },
         "verify_key": {
@@ -46,7 +46,7 @@ export const Application = {
             "description": "the hex encoded key for verification in interactions and the GameSDK's [GetTicket](#DOCS_GAME_SDK_APPLICATIONS/getticket)"
         },
         "team": {
-            "$ref": "Datamodelsteamobject",
+            "$ref": "DataModelsTeam",
             "description": "if the application belongs to a team, this will be a list of the members of that team"
         },
         "guild_id": {
@@ -74,7 +74,7 @@ export const Application = {
             "description": "up to 5 tags describing the content and functionality of the application"
         },
         "install_params": {
-            "$ref": "Installparamsobject",
+            "$ref": "InstallParams",
             "description": "settings for the application's default in-app authorization link, if enabled"
         },
         "custom_install_url": {

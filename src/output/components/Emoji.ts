@@ -10,11 +10,11 @@ export const Emoji = {
             "description": "emoji name"
         },
         "roles": {
-            "$ref": "Roleobject",
+            "$ref": "Role",
             "description": "roles allowed to use this emoji"
         },
         "user": {
-            "$ref": "Userobject",
+            "$ref": "User",
             "description": "user that created this emoji"
         },
         "require_colons": {

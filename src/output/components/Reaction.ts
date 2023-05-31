@@ -10,7 +10,7 @@ export const Reaction = {
             "description": "whether the current user reacted using this emoji"
         },
         "emoji": {
-            "$ref": "Emojiobject",
+            "$ref": "Emoji",
             "description": "emoji information"
         }
     },

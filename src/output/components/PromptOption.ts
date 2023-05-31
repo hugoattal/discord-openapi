@@ -14,7 +14,7 @@ export const PromptOption = {
             "description": "IDs for roles assigned to a member when the option is selected"
         },
         "emoji": {
-            "$ref": "Emojiobject",
+            "$ref": "Emoji",
             "description": "Emoji of the option"
         },
         "title": {
