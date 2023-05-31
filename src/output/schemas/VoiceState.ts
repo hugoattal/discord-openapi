@@ -14,7 +14,7 @@ export const VoiceState = {
             "description": "the user id this voice state is for"
         },
         "member": {
-            "$ref": "GuildMember",
+            "$ref": "#/components/schemas/GuildMember",
             "description": "the guild member this voice state is for"
         },
         "session_id": {

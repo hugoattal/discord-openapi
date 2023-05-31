@@ -22,7 +22,7 @@ export const GuildPreview = {
             "description": "[discovery splash hash](#DOCS_REFERENCE/image-formatting)"
         },
         "emojis": {
-            "$ref": "Emoji",
+            "$ref": "#/components/schemas/Emoji",
             "description": "custom guild emojis"
         },
         "features": {
@@ -42,7 +42,7 @@ export const GuildPreview = {
             "description": "the description for the guild"
         },
         "stickers": {
-            "$ref": "Sticker",
+            "$ref": "#/components/schemas/Sticker",
             "description": "custom guild stickers"
         }
     },

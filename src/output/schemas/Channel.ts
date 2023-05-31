@@ -18,7 +18,7 @@ export const Channel = {
             "description": "sorting position of the channel"
         },
         "permission_overwrites": {
-            "$ref": "Overwrite",
+            "$ref": "#/components/schemas/Overwrite",
             "description": "explicit permission overwrites for members and roles"
         },
         "name": {
@@ -50,7 +50,7 @@ export const Channel = {
             "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected"
         },
         "recipients": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the recipients of the DM"
         },
         "icon": {
@@ -95,11 +95,11 @@ export const Channel = {
             "description": "an approximate count of users in a thread, stops counting at 50"
         },
         "thread_metadata": {
-            "$ref": "ThreadMetadata",
+            "$ref": "#/components/schemas/ThreadMetadata",
             "description": "thread-specific fields not needed by other channels"
         },
         "member": {
-            "$ref": "ThreadMember",
+            "$ref": "#/components/schemas/ThreadMember",
             "description": "thread member object for the current user, if they have joined the thread, only included on certain API endpoints"
         },
         "default_auto_archive_duration": {
@@ -119,7 +119,7 @@ export const Channel = {
             "description": "number of messages ever sent in a thread, it's similar to `message_count` on message creation, but will not decrement the number when a message is deleted"
         },
         "available_tags": {
-            "$ref": "ForumTag",
+            "$ref": "#/components/schemas/ForumTag",
             "description": "the set of tags that can be used in a `GUILD_FORUM` channel"
         },
         "applied_tags": {
@@ -130,7 +130,7 @@ export const Channel = {
             }
         },
         "default_reaction_emoji": {
-            "$ref": "DefaultReaction",
+            "$ref": "#/components/schemas/DefaultReaction",
             "description": "the emoji to show in the add reaction button on a thread in a `GUILD_FORUM` channel"
         },
         "default_thread_rate_limit_per_user": {

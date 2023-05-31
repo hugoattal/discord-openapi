@@ -19,7 +19,7 @@ export const ThreadMember = {
             "description": "Any user-thread settings, currently only used for notifications"
         },
         "member  ": {
-            "$ref": "GuildMember",
+            "$ref": "#/components/schemas/GuildMember",
             "description": "Additional information about the user"
         }
     },

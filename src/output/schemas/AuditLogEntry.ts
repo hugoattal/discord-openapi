@@ -6,7 +6,7 @@ export const AuditLogEntry = {
             "description": "ID of the affected entity (webhook, user, role, etc.)"
         },
         "changes": {
-            "$ref": "AuditLogChange",
+            "$ref": "#/components/schemas/AuditLogChange",
             "description": "Changes made to the target_id"
         },
         "user_id": {

@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export function markdownToJSONObject(markdown: string): object {
+export function markdownToSchema(markdown: string) {
     const lines = markdown.trim().split("\n");
     const headers = lines[0].split("|").map(header => header.trim()).filter(header => header !== "");
 
@@ -47,7 +47,7 @@ export function markdownToJSONObject(markdown: string): object {
         if (obj.type.match(/#DOCS_/)) {
             const match = obj.type.match(/#DOCS_[\w_]+\/([\w-]+)/);
             if (match[1].endsWith("-object")) {
-                obj.$ref = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
+                obj.$ref = `#/components/schemas/${ _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "") }`;
                 delete obj.type;
             }
             else {

@@ -20,7 +20,7 @@ export const PromptOption = {
             }
         },
         "emoji": {
-            "$ref": "Emoji",
+            "$ref": "#/components/schemas/Emoji",
             "description": "Emoji of the option"
         },
         "title": {

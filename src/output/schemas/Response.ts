@@ -2,7 +2,7 @@ export const Response = {
     "type": "object",
     "properties": {
         "sticker_packs": {
-            "$ref": "StickerPack"
+            "$ref": "#/components/schemas/StickerPack"
         }
     },
     "required": [

@@ -22,7 +22,7 @@ export const GuildTemplate = {
             "description": "the ID of the user who created the template"
         },
         "creator": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the user who created the template"
         },
         "created_at": {
@@ -40,7 +40,7 @@ export const GuildTemplate = {
             "description": "the ID of the guild this template is based on"
         },
         "serialized_source_guild": {
-            "$ref": "Guild",
+            "$ref": "#/components/schemas/Guild",
             "description": "the guild snapshot this template contains"
         },
         "is_dirty": {

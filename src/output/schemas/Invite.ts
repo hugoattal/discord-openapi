@@ -6,15 +6,15 @@ export const Invite = {
             "description": "the invite code (unique ID)"
         },
         "guild": {
-            "$ref": "Guild",
+            "$ref": "#/components/schemas/Guild",
             "description": "the guild this invite is for"
         },
         "channel": {
-            "$ref": "Channel",
+            "$ref": "#/components/schemas/Channel",
             "description": "the channel this invite is for"
         },
         "inviter": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the user who created the invite"
         },
         "target_type": {
@@ -22,11 +22,11 @@ export const Invite = {
             "description": "the [type of target](#DOCS_RESOURCES_INVITE/invite-object-invite-target-types) for this voice channel invite"
         },
         "target_user": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the user whose stream to display for this voice channel stream invite"
         },
         "target_application": {
-            "$ref": "Application",
+            "$ref": "#/components/schemas/Application",
             "description": "the embedded application to open for this voice channel embedded application invite"
         },
         "approximate_presence_count": {
@@ -43,11 +43,11 @@ export const Invite = {
             "format": "date-time"
         },
         "stage_instance": {
-            "$ref": "InviteStageInstance",
+            "$ref": "#/components/schemas/InviteStageInstance",
             "description": "stage instance data if there is a [public Stage instance](#DOCS_RESOURCES_STAGE_INSTANCE) in the Stage channel this invite is for (deprecated)"
         },
         "guild_scheduled_event": {
-            "$ref": "GuildScheduledEvent",
+            "$ref": "#/components/schemas/GuildScheduledEvent",
             "description": "guild scheduled event data, only included if `guild_scheduled_event_id` contains a valid guild scheduled event id"
         }
     },

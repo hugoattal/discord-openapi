@@ -38,11 +38,11 @@ export const Integration = {
             "description": "the grace period (in days) before expiring subscribers"
         },
         "user": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "user for this integration"
         },
         "account": {
-            "$ref": "IntegrationAccount",
+            "$ref": "#/components/schemas/IntegrationAccount",
             "description": "integration account information"
         },
         "synced_at ": {
@@ -59,7 +59,7 @@ export const Integration = {
             "description": "has this integration been revoked"
         },
         "application": {
-            "$ref": "IntegrationApplication",
+            "$ref": "#/components/schemas/IntegrationApplication",
             "description": "The bot/OAuth2 application for discord integrations"
         },
         "scopes": {

@@ -56,7 +56,7 @@ export const GuildScheduledEvent = {
             "description": "additional metadata for the guild scheduled event"
         },
         "creator": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the user that created the scheduled event"
         },
         "user_count": {

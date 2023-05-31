@@ -10,7 +10,7 @@ export const Message = {
             "description": "id of the channel the message was sent in"
         },
         "author": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the author of this message (not guaranteed to be a valid user, see below)"
         },
         "content": {
@@ -36,27 +36,27 @@ export const Message = {
             "description": "whether this message mentions everyone"
         },
         "mentions": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "users specifically mentioned in the message"
         },
         "mention_roles": {
-            "$ref": "Role",
+            "$ref": "#/components/schemas/Role",
             "description": "roles specifically mentioned in this message"
         },
         "mention_channels": {
-            "$ref": "ChannelMention",
+            "$ref": "#/components/schemas/ChannelMention",
             "description": "channels specifically mentioned in this message"
         },
         "attachments": {
-            "$ref": "Attachment",
+            "$ref": "#/components/schemas/Attachment",
             "description": "any attached files"
         },
         "embeds": {
-            "$ref": "Embed",
+            "$ref": "#/components/schemas/Embed",
             "description": "any embedded content"
         },
         "reactions": {
-            "$ref": "Reaction",
+            "$ref": "#/components/schemas/Reaction",
             "description": "reactions to the message"
         },
         "nonce": {
@@ -80,7 +80,7 @@ export const Message = {
             "description": "sent with Rich Presence-related chat embeds"
         },
         "application": {
-            "$ref": "Application",
+            "$ref": "#/components/schemas/Application",
             "description": "sent with Rich Presence-related chat embeds"
         },
         "application_id": {
@@ -96,7 +96,7 @@ export const Message = {
             "description": "[message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field)"
         },
         "referenced_message": {
-            "$ref": "Message",
+            "$ref": "#/components/schemas/Message",
             "description": "the message associated with the message_reference"
         },
         "interaction": {
@@ -104,19 +104,19 @@ export const Message = {
             "description": "sent if the message is a response to an [Interaction](#DOCS_INTERACTIONS_RECEIVING_AND_RESPONDING/)"
         },
         "thread": {
-            "$ref": "Channel",
+            "$ref": "#/components/schemas/Channel",
             "description": "the thread that was started from this message, includes [thread member](#DOCS_RESOURCES_CHANNEL/thread-member-object) object"
         },
         "components": {
-            "$ref": "Component",
+            "$ref": "#/components/schemas/Component",
             "description": "sent if the message contains components like buttons, action rows, or other interactive components"
         },
         "sticker_items": {
-            "$ref": "StickerItem",
+            "$ref": "#/components/schemas/StickerItem",
             "description": "sent if the message contains stickers"
         },
         "stickers": {
-            "$ref": "Sticker",
+            "$ref": "#/components/schemas/Sticker",
             "description": "**Deprecated** the stickers sent with the message"
         },
         "position": {
@@ -124,7 +124,7 @@ export const Message = {
             "description": "A generally increasing integer (there may be gaps or duplicates) that represents the approximate position of the message in a thread, it can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread"
         },
         "role_subscription_data": {
-            "$ref": "RoleSubscriptionData",
+            "$ref": "#/components/schemas/RoleSubscriptionData",
             "description": "data of the role subscription purchase or renewal that prompted this ROLE_SUBSCRIPTION_PURCHASE message"
         }
     },

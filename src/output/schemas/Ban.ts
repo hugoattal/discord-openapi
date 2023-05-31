@@ -6,7 +6,7 @@ export const Ban = {
             "description": "the reason for the ban"
         },
         "user": {
-            "$ref": "User",
+            "$ref": "#/components/schemas/User",
             "description": "the banned user"
         }
     },
