@@ -70,10 +70,11 @@ export function generate() {
                 }
 
                 let description = "";
-                while (lines[lineIndex] && !lines[lineIndex].startsWith("#")) {
+                while (lines[lineIndex] && !lines[lineIndex].startsWith("## ")) {
                     description += `${ lines[lineIndex] }\n`;
                     lineIndex++;
                 }
+                lineIndex--;
 
                 const path = markdownToPath({ description, endpoint, method });
 

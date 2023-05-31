@@ -15,11 +15,20 @@ export function markdownToPath(extract: {description: string; endpoint: string; 
 
     path.id = camelCase(extract.method + endpoint
         .split("/")
-        .filter((part) => !part.startsWith("{"))
+        .filter((part) => !part.endsWith("_id}"))
+        .map((part) => part.replace(/{([\w.]+)}/, (match, p1) => p1))
         .join("/"));
 
-    if (endpoint === "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions") {
+    if (endpoint === "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions" && path.method === "put") {
         path.id = "putApplicationsGuildsCommandPermissions";
+    }
+
+    if (endpoint === "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions" && path.method === "get") {
+        path.id = "getApplicationsGuildsCommandPermissions";
+    }
+
+    if (endpoint === "/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/{user_id}" && path.method === "delete") {
+        path.id = "deleteChannelsMessagesReactionsUser";
     }
 
     path.description = extract.description.trim()

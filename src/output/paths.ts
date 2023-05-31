@@ -27,6 +27,31 @@ export const paths = {
                     "description": "Returns a list of application role connection metadata objects for the given application."
                 }
             }
+        },
+        "put": {
+            "operationId": "putApplicationsRoleConnectionsMetadata",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Updates and returns a list of application role connection metadata objects for the given application.\r"
+                }
+            }
         }
     },
     "/guilds/{guild_id}/audit-logs": {
@@ -112,6 +137,39 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/auto-moderation/rules/{auto_moderation_rule_id}": {
+        "get": {
+            "operationId": "getGuildsAutoModerationRule",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "auto_moderation_rule_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AutoModerationRule"
+                            }
+                        }
+                    },
+                    "description": "Get a single rule. Returns an auto moderation rule object.\r"
+                }
+            }
+        },
         "patch": {
             "operationId": "patchGuildsAutoModerationRule",
             "parameters": [
@@ -204,6 +262,31 @@ export const paths = {
                     "description": "Get a channel by ID. Returns a channel object.  If the channel is a thread, a thread member object is included in the returned result."
                 }
             }
+        },
+        "patch": {
+            "operationId": "patchChannel",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Channel"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
         }
     },
     "/channels/{channel_id}/messages": {
@@ -232,6 +315,31 @@ export const paths = {
                         }
                     },
                     "description": "Retrieves the messages in a channel. Returns an array of message objects on success.\r"
+                }
+            }
+        },
+        "post": {
+            "operationId": "postChannelsMessages",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Message"
+                            }
+                        }
+                    },
+                    "description": "Post a message to a guild text or DM channel. Returns a message object. Fires a Message Create Gateway event. See message formatting for more information on how to properly format messages.\r"
                 }
             }
         }
@@ -373,8 +481,49 @@ export const paths = {
         }
     },
     "/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me": {
+        "put": {
+            "operationId": "putChannelsMessagesReactionsEmojiMe",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "emoji",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Create a reaction for the message. This endpoint requires the `READ_MESSAGE_HISTORY` permission to be present on the current user. Additionally, if nobody else has reacted to the message using this emoji, this endpoint requires the `ADD_REACTIONS` permission to be present on the current user. Returns a 204 empty response on success. Fires a Message Reaction Add Gateway event.\r"
+                }
+            }
+        },
         "delete": {
-            "operationId": "deleteChannelsMessagesReactionsMe",
+            "operationId": "deleteChannelsMessagesReactionsEmojiMe",
             "parameters": [
                 {
                     "name": "channel_id",
@@ -415,9 +564,60 @@ export const paths = {
             }
         }
     },
+    "/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/{user_id}": {
+        "delete": {
+            "operationId": "deleteChannelsMessagesReactionsUser",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "emoji",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Deletes another user's reaction. This endpoint requires the `MANAGE_MESSAGES` permission to be present on the current user. Returns a 204 empty response on success. Fires a Message Reaction Remove Gateway event.\r"
+                }
+            }
+        }
+    },
     "/channels/{channel_id}/messages/{message_id}/reactions/{emoji}": {
         "get": {
-            "operationId": "getChannelsMessagesReaction",
+            "operationId": "getChannelsMessagesReactionsEmoji",
             "parameters": [
                 {
                     "name": "channel_id",
@@ -459,6 +659,47 @@ export const paths = {
                     "description": "Get a list of users that reacted with this emoji. Returns an array of user objects on success.\r"
                 }
             }
+        },
+        "delete": {
+            "operationId": "deleteChannelsMessagesReactionsEmoji",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "emoji",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Deletes all the reactions for a given emoji on a message. This endpoint requires the `MANAGE_MESSAGES` permission to be present on the current user. Fires a Message Reaction Remove Emoji Gateway event.\r"
+                }
+            }
         }
     },
     "/channels/{channel_id}/messages/{message_id}/reactions": {
@@ -492,6 +733,33 @@ export const paths = {
                         }
                     },
                     "description": "Deletes all reactions on a message. This endpoint requires the `MANAGE_MESSAGES` permission to be present on the current user. Fires a Message Reaction Remove All Gateway event."
+                }
+            }
+        }
+    },
+    "/channels/{channel_id}/messages/bulk-delete": {
+        "post": {
+            "operationId": "postChannelsMessagesBulkDelete",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Delete multiple messages in a single request. This endpoint can only be used on guild channels and requires the `MANAGE_MESSAGES` permission. Returns a 204 empty response on success. Fires a Message Delete Bulk Gateway event.\r"
                 }
             }
         }
@@ -592,6 +860,58 @@ export const paths = {
                     "description": "Returns a list of invite objects (with invite metadata) for the channel. Only usable for guild channels. Requires the `MANAGE_CHANNELS` permission."
                 }
             }
+        },
+        "post": {
+            "operationId": "postChannelsInvites",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Invite"
+                            }
+                        }
+                    },
+                    "description": "Create a new invite object for the channel. Only usable for guild channels. Requires the `CREATE_INSTANT_INVITE` permission. All JSON parameters for this route are optional, however the request body is not. If you are not sending any fields, you still have to send an empty JSON object (`{}`). Returns an invite object. Fires an Invite Create Gateway event.\r"
+                }
+            }
+        }
+    },
+    "/channels/{channel_id}/followers": {
+        "post": {
+            "operationId": "postChannelsFollowers",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FollowedChannel"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
         }
     },
     "/channels/{channel_id}/typing": {
@@ -617,6 +937,36 @@ export const paths = {
                         }
                     },
                     "description": "Post a typing indicator for the specified channel. Generally bots should **not** implement this route. However, if a bot is responding to a command and expects the computation to take a few seconds, this endpoint may be called to let the user know that the bot is processing their message. Returns a 204 empty response on success. Fires a Typing Start Gateway event."
+                }
+            }
+        }
+    },
+    "/channels/{channel_id}/pins": {
+        "get": {
+            "operationId": "getChannelsPins",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Message"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns all pinned messages in the channel as an array of message objects."
                 }
             }
         }
@@ -654,6 +1004,39 @@ export const paths = {
                     "description": "Pin a message in a channel. Requires the `MANAGE_MESSAGES` permission. Returns a 204 empty response on success. Fires a Channel Pins Update Gateway event.\r"
                 }
             }
+        },
+        "delete": {
+            "operationId": "deleteChannelsPin",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
         }
     },
     "/channels/{channel_id}/recipients/{user_id}": {
@@ -686,7 +1069,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Adds a recipient to a Group DM using their access token."
+                    "description": "Adds a recipient to a Group DM using their access token.\r"
                 }
             }
         },
@@ -720,6 +1103,41 @@ export const paths = {
                         }
                     },
                     "description": "Removes a recipient from a Group DM."
+                }
+            }
+        }
+    },
+    "/channels/{channel_id}/messages/{message_id}/threads": {
+        "post": {
+            "operationId": "postChannelsMessagesThreads",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Channel"
+                            }
+                        }
+                    },
+                    "description": "Creates a new thread from an existing message. Returns a channel on success, and a 400 BAD REQUEST on invalid parameters. Fires a Thread Create and a Message Update Gateway event.\r"
                 }
             }
         }
@@ -804,6 +1222,72 @@ export const paths = {
         }
     },
     "/channels/{channel_id}/thread-members/{user_id}": {
+        "put": {
+            "operationId": "putChannelsThreadMember",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Adds another member to a thread. Requires the ability to send messages in the thread. Also requires the thread is not archived. Returns a 204 empty response if the member is successfully added or was already a member of the thread. Fires a Thread Members Update Gateway event."
+                }
+            }
+        },
+        "delete": {
+            "operationId": "deleteChannelsThreadMember",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Removes another member from a thread. Requires the `MANAGE_THREADS` permission, or the creator of the thread if it is a `PRIVATE_THREAD`. Also requires the thread is not archived. Returns a 204 empty response on success. Fires a Thread Members Update Gateway event."
+                }
+            }
+        },
         "get": {
             "operationId": "getChannelsThreadMember",
             "parameters": [
@@ -890,7 +1374,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns archived threads in the channel that are public. When called on a `GUILD_TEXT` channel, returns threads of type `PUBLIC_THREAD`. When called on a `GUILD_ANNOUNCEMENT` channel returns threads of type `ANNOUNCEMENT_THREAD`. Threads are ordered by `archive_timestamp`, in descending order. Requires the `READ_MESSAGE_HISTORY` permission."
+                    "description": "Returns archived threads in the channel that are public. When called on a `GUILD_TEXT` channel, returns threads of type `PUBLIC_THREAD`. When called on a `GUILD_ANNOUNCEMENT` channel returns threads of type `ANNOUNCEMENT_THREAD`. Threads are ordered by `archive_timestamp`, in descending order. Requires the `READ_MESSAGE_HISTORY` permission.\r"
                 }
             }
         }
@@ -917,7 +1401,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns archived threads in the channel that are of type `PRIVATE_THREAD`. Threads are ordered by `archive_timestamp`, in descending order. Requires both the `READ_MESSAGE_HISTORY` and `MANAGE_THREADS` permissions."
+                    "description": "Returns archived threads in the channel that are of type `PRIVATE_THREAD`. Threads are ordered by `archive_timestamp`, in descending order. Requires both the `READ_MESSAGE_HISTORY` and `MANAGE_THREADS` permissions.\r"
                 }
             }
         }
@@ -944,7 +1428,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns archived threads in the channel that are of type `PRIVATE_THREAD`, and the user has joined. Threads are ordered by their `id`, in descending order. Requires the `READ_MESSAGE_HISTORY` permission."
+                    "description": "Returns archived threads in the channel that are of type `PRIVATE_THREAD`, and the user has joined. Threads are ordered by their `id`, in descending order. Requires the `READ_MESSAGE_HISTORY` permission.\r"
                 }
             }
         }
@@ -1005,6 +1489,39 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/emojis/{emoji_id}": {
+        "get": {
+            "operationId": "getGuildsEmoji",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "emoji_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Emoji"
+                            }
+                        }
+                    },
+                    "description": "Returns an emoji object for the given guild and emoji IDs."
+                }
+            }
+        },
         "patch": {
             "operationId": "patchGuildsEmoji",
             "parameters": [
@@ -1111,7 +1628,32 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns the guild object for the given id. If `with_counts` is set to `true`, this endpoint will also return `approximate_member_count` and `approximate_presence_count` for the guild."
+                    "description": "Returns the guild object for the given id. If `with_counts` is set to `true`, this endpoint will also return `approximate_member_count` and `approximate_presence_count` for the guild.\r"
+                }
+            }
+        },
+        "patch": {
+            "operationId": "patchGuild",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Guild"
+                            }
+                        }
+                    },
+                    "description": "Modify a guild's settings. Requires the `MANAGE_GUILD` permission. Returns the updated guild object on success. Fires a Guild Update Gateway event.\r"
                 }
             }
         },
@@ -1169,6 +1711,34 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/channels": {
+        "get": {
+            "operationId": "getGuildsChannels",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Channel"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of guild channel objects. Does not include threads."
+                }
+            }
+        },
         "post": {
             "operationId": "postGuildsChannels",
             "parameters": [
@@ -1242,7 +1812,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns all active threads in the guild, including public and private threads. Threads are ordered by their `id`, in descending order."
+                    "description": "Returns all active threads in the guild, including public and private threads. Threads are ordered by their `id`, in descending order.\r"
                 }
             }
         }
@@ -1381,6 +1951,36 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/members": {
+        "get": {
+            "operationId": "getGuildsMembers",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/GuildMember"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of guild member objects that are members of the guild.\r"
+                }
+            }
+        }
+    },
     "/guilds/{guild_id}/members/search": {
         "get": {
             "operationId": "getGuildsMembersSearch",
@@ -1506,6 +2106,77 @@ export const paths = {
                     "description": "Adds a role to a guild member. Requires the `MANAGE_ROLES` permission. Returns a 204 empty response on success. Fires a Guild Member Update Gateway event.\r"
                 }
             }
+        },
+        "delete": {
+            "operationId": "deleteGuildsMembersRole",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "role_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Removes a role from a guild member. Requires the `MANAGE_ROLES` permission. Returns a 204 empty response on success. Fires a Guild Member Update Gateway event.\r"
+                }
+            }
+        }
+    },
+    "/guilds/{guild_id}/bans": {
+        "get": {
+            "operationId": "getGuildsBans",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Ban"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of ban objects for the users banned from this guild. Requires the `BAN_MEMBERS` permission.\r"
+                }
+            }
         }
     },
     "/guilds/{guild_id}/bans/{user_id}": {
@@ -1539,6 +2210,39 @@ export const paths = {
                         }
                     },
                     "description": "Returns a ban object for the given user or a 404 not found if the ban cannot be found. Requires the `BAN_MEMBERS` permission."
+                }
+            }
+        },
+        "put": {
+            "operationId": "putGuildsBan",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Create a guild ban, and optionally delete previous messages sent by the banned user. Requires the `BAN_MEMBERS` permission. Returns a 204 empty response on success. Fires a Guild Ban Add Gateway event.\r"
                 }
             }
         },
@@ -1577,6 +2281,34 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/roles": {
+        "get": {
+            "operationId": "getGuildsRoles",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of role objects for the guild."
+                }
+            }
+        },
         "post": {
             "operationId": "postGuildsRoles",
             "parameters": [
@@ -1729,6 +2461,31 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/prune": {
+        "get": {
+            "operationId": "getGuildsPrune",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns an object with one `pruned` key indicating the number of members that would be removed in a prune operation. Requires the `KICK_MEMBERS` permission.\r"
+                }
+            }
+        },
         "post": {
             "operationId": "postGuildsPrune",
             "parameters": [
@@ -1785,6 +2542,36 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/invites": {
+        "get": {
+            "operationId": "getGuildsInvites",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Invite"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of invite objects (with invite metadata) for the guild. Requires the `MANAGE_GUILD` permission."
+                }
+            }
+        }
+    },
     "/guilds/{guild_id}/integrations": {
         "get": {
             "operationId": "getGuildsIntegrations",
@@ -1815,6 +2602,41 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/integrations/{integration_id}": {
+        "delete": {
+            "operationId": "deleteGuildsIntegration",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "integration_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Delete the attached integration object for the guild. Deletes any associated webhooks and kicks the associated bot if there is one. Requires the `MANAGE_GUILD` permission. Returns a 204 empty response on success. Fires Guild Integrations Update and Integration Delete Gateway events.\r"
+                }
+            }
+        }
+    },
     "/guilds/{guild_id}/widget": {
         "get": {
             "operationId": "getGuildsWidget",
@@ -1838,6 +2660,31 @@ export const paths = {
                         }
                     },
                     "description": "Returns a guild widget settings object. Requires the `MANAGE_GUILD` permission."
+                }
+            }
+        },
+        "patch": {
+            "operationId": "patchGuildsWidget",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuildWidgetSettings"
+                            }
+                        }
+                    },
+                    "description": "Modify a guild widget settings object for the guild. All attributes may be passed in with JSON and modified. Requires the `MANAGE_GUILD` permission. Returns the updated guild widget object.\r"
                 }
             }
         }
@@ -1869,6 +2716,60 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/vanity-url": {
+        "get": {
+            "operationId": "getGuildsVanityUrl",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Invite"
+                            }
+                        }
+                    },
+                    "description": "Returns a partial invite object for guilds with that feature enabled. Requires the `MANAGE_GUILD` permission. `code` will be null if a vanity url for the guild is not set.\r"
+                }
+            }
+        }
+    },
+    "/guilds/{guild_id}/widget.png": {
+        "get": {
+            "operationId": "getGuildsWidgetPng",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns a PNG image widget for the guild. Requires no permissions or authentication.\r"
+                }
+            }
+        }
+    },
     "/guilds/{guild_id}/welcome-screen": {
         "get": {
             "operationId": "getGuildsWelcomeScreen",
@@ -1892,6 +2793,31 @@ export const paths = {
                         }
                     },
                     "description": "Returns the Welcome Screen object for the guild. If the welcome screen is not enabled, the `MANAGE_GUILD` permission is required."
+                }
+            }
+        },
+        "patch": {
+            "operationId": "patchGuildsWelcomeScreen",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WelcomeScreen"
+                            }
+                        }
+                    },
+                    "description": "Modify the guild's Welcome Screen. Requires the `MANAGE_GUILD` permission. Returns the updated Welcome Screen object. May fire a Guild Update Gateway event.\r"
                 }
             }
         }
@@ -1919,6 +2845,33 @@ export const paths = {
                         }
                     },
                     "description": "Returns the Onboarding object for the guild."
+                }
+            }
+        }
+    },
+    "/guilds/{guild_id}/voice-states/@me": {
+        "patch": {
+            "operationId": "patchGuildsVoiceStatesMe",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Updates the current user's voice state. Returns `204 No Content` on success. Fires a Voice State Update Gateway event.\r"
                 }
             }
         }
@@ -1953,7 +2906,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Updates another user's voice state. Fires a Voice State Update Gateway event."
+                    "description": "Updates another user's voice state. Fires a Voice State Update Gateway event.\r"
                 }
             }
         }
@@ -1983,7 +2936,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns a list of guild scheduled event objects for the given guild."
+                    "description": "Returns a list of guild scheduled event objects for the given guild.\r"
                 }
             }
         },
@@ -2043,7 +2996,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Get a guild scheduled event. Returns a guild scheduled event object on success."
+                    "description": "Get a guild scheduled event. Returns a guild scheduled event object on success.\r"
                 }
             }
         },
@@ -2114,9 +3067,47 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/users": {
+        "get": {
+            "operationId": "getGuildsScheduledEventsUsers",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "guild_scheduled_event_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/GuildScheduledEventUser"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Get a list of guild scheduled event users subscribed to a guild scheduled event. Returns a list of guild scheduled event user objects on success. Guild member data, if it exists, is included if the `with_member` query parameter is set.\r"
+                }
+            }
+        }
+    },
     "/guilds/templates/{template_code}": {
         "post": {
-            "operationId": "postGuildsTemplate",
+            "operationId": "postGuildsTemplatesTemplateCode",
             "parameters": [
                 {
                     "name": "template_code",
@@ -2169,11 +3160,36 @@ export const paths = {
                     "description": "Returns an array of guild template objects. Requires the `MANAGE_GUILD` permission."
                 }
             }
+        },
+        "post": {
+            "operationId": "postGuildsTemplates",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuildTemplate"
+                            }
+                        }
+                    },
+                    "description": "Creates a template for the guild. Requires the `MANAGE_GUILD` permission. Returns the created guild template object on success.\r"
+                }
+            }
         }
     },
     "/guilds/{guild_id}/templates/{template_code}": {
         "put": {
-            "operationId": "putGuildsTemplate",
+            "operationId": "putGuildsTemplatesTemplateCode",
             "parameters": [
                 {
                     "name": "guild_id",
@@ -2205,8 +3221,41 @@ export const paths = {
                 }
             }
         },
+        "patch": {
+            "operationId": "patchGuildsTemplatesTemplateCode",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "template_code",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuildTemplate"
+                            }
+                        }
+                    },
+                    "description": "Modifies the template's metadata. Requires the `MANAGE_GUILD` permission. Returns the guild template object on success.\r"
+                }
+            }
+        },
         "delete": {
-            "operationId": "deleteGuildsTemplate",
+            "operationId": "deleteGuildsTemplatesTemplateCode",
             "parameters": [
                 {
                     "name": "guild_id",
@@ -2241,7 +3290,7 @@ export const paths = {
     },
     "/invites/{invite_code}": {
         "get": {
-            "operationId": "getInvite",
+            "operationId": "getInvitesInviteCode",
             "parameters": [
                 {
                     "name": "invite_code",
@@ -2261,12 +3310,12 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns an invite object for the given code."
+                    "description": "Returns an invite object for the given code.\r"
                 }
             }
         },
         "delete": {
-            "operationId": "deleteInvite",
+            "operationId": "deleteInvitesInviteCode",
             "parameters": [
                 {
                     "name": "invite_code",
@@ -2334,6 +3383,31 @@ export const paths = {
                 }
             }
         },
+        "patch": {
+            "operationId": "patchStageInstance",
+            "parameters": [
+                {
+                    "name": "channel_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StageInstance"
+                            }
+                        }
+                    },
+                    "description": "Updates fields of an existing Stage instance. Returns the updated Stage instance. Fires a Stage Instance Update Gateway event.\r"
+                }
+            }
+        },
         "delete": {
             "operationId": "deleteStageInstance",
             "parameters": [
@@ -2383,6 +3457,23 @@ export const paths = {
                         }
                     },
                     "description": "Returns a sticker object for the given sticker ID."
+                }
+            }
+        }
+    },
+    "/sticker-packs": {
+        "get": {
+            "operationId": "getStickerPacks",
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns the list of sticker packs available to Nitro subscribers.\r"
                 }
             }
         }
@@ -2443,6 +3534,39 @@ export const paths = {
         }
     },
     "/guilds/{guild_id}/stickers/{sticker_id}": {
+        "get": {
+            "operationId": "getGuildsSticker",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "sticker_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Sticker"
+                            }
+                        }
+                    },
+                    "description": "Returns a sticker object for the given guild and sticker IDs. Includes the `user` field if the bot has the `MANAGE_GUILD_EXPRESSIONS` permission."
+                }
+            }
+        },
         "patch": {
             "operationId": "patchGuildsSticker",
             "parameters": [
@@ -2542,6 +3666,33 @@ export const paths = {
             }
         }
     },
+    "/users/{user_id}": {
+        "get": {
+            "operationId": "getUser",
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "description": "Returns a user object for a given user ID."
+                }
+            }
+        }
+    },
     "/users/@me/guilds": {
         "get": {
             "operationId": "getUsersMeGuilds",
@@ -2557,7 +3708,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns a list of partial guild objects the current user is a member of. Requires the `guilds` OAuth2 scope."
+                    "description": "Returns a list of partial guild objects the current user is a member of. Requires the `guilds` OAuth2 scope.\r"
                 }
             }
         }
@@ -2585,6 +3736,33 @@ export const paths = {
                         }
                     },
                     "description": "Returns a guild member object for the current user. Requires the `guilds.members.read` OAuth2 scope."
+                }
+            }
+        }
+    },
+    "/users/@me/guilds/{guild_id}": {
+        "delete": {
+            "operationId": "deleteUsersMeGuild",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
                 }
             }
         }
@@ -2627,6 +3805,31 @@ export const paths = {
         }
     },
     "/users/@me/applications/{application_id}/role-connection": {
+        "get": {
+            "operationId": "getUsersMeApplicationsRoleConnection",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApplicationRoleConnection"
+                            }
+                        }
+                    },
+                    "description": "Returns the application role connection for the user. Requires an OAuth2 access token with `role_connections.write` scope for the application specified in the path."
+                }
+            }
+        },
         "put": {
             "operationId": "putUsersMeApplicationsRoleConnection",
             "parameters": [
@@ -2648,7 +3851,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Updates and returns the application role connection for the user. Requires an OAuth2 access token with `role_connections.write` scope for the application specified in the path."
+                    "description": "Updates and returns the application role connection for the user. Requires an OAuth2 access token with `role_connections.write` scope for the application specified in the path.\r"
                 }
             }
         }
@@ -2728,6 +3931,36 @@ export const paths = {
             }
         }
     },
+    "/guilds/{guild_id}/webhooks": {
+        "get": {
+            "operationId": "getGuildsWebhooks",
+            "parameters": [
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Webhook"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Returns a list of guild webhook objects. Requires the `MANAGE_WEBHOOKS` permission."
+                }
+            }
+        }
+    },
     "/webhooks/{webhook_id}": {
         "get": {
             "operationId": "getWebhook",
@@ -2778,11 +4011,69 @@ export const paths = {
                     "description": "Modify a webhook. Requires the `MANAGE_WEBHOOKS` permission. Returns the updated webhook object on success. Fires a Webhooks Update Gateway event.\r"
                 }
             }
+        },
+        "delete": {
+            "operationId": "deleteWebhook",
+            "parameters": [
+                {
+                    "name": "webhook_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Delete a webhook permanently. Requires the `MANAGE_WEBHOOKS` permission. Returns a `204 No Content` response on success. Fires a Webhooks Update Gateway event.\r"
+                }
+            }
         }
     },
     "/webhooks/{webhook_id}/{webhook_token}": {
+        "get": {
+            "operationId": "getWebhooksWebhookToken",
+            "parameters": [
+                {
+                    "name": "webhook_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "webhook_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
+        },
         "patch": {
-            "operationId": "patchWebhook",
+            "operationId": "patchWebhooksWebhookToken",
             "parameters": [
                 {
                     "name": "webhook_id",
@@ -2815,7 +4106,40 @@ export const paths = {
             }
         },
         "delete": {
-            "operationId": "deleteWebhook",
+            "operationId": "deleteWebhooksWebhookToken",
+            "parameters": [
+                {
+                    "name": "webhook_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "webhook_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "operationId": "postWebhooksWebhookToken",
             "parameters": [
                 {
                     "name": "webhook_id",
@@ -2850,7 +4174,7 @@ export const paths = {
     },
     "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}": {
         "get": {
-            "operationId": "getWebhooksMessage",
+            "operationId": "getWebhooksWebhookTokenMessage",
             "parameters": [
                 {
                     "name": "webhook_id",
@@ -2886,12 +4210,12 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns a previously-sent webhook message from the same token. Returns a message object on success."
+                    "description": "Returns a previously-sent webhook message from the same token. Returns a message object on success.\r"
                 }
             }
         },
         "patch": {
-            "operationId": "patchWebhooksMessage",
+            "operationId": "patchWebhooksWebhookTokenMessage",
             "parameters": [
                 {
                     "name": "webhook_id",
@@ -2932,7 +4256,7 @@ export const paths = {
             }
         },
         "delete": {
-            "operationId": "deleteWebhooksMessage",
+            "operationId": "deleteWebhooksWebhookTokenMessage",
             "parameters": [
                 {
                     "name": "webhook_id",
@@ -2968,7 +4292,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Deletes a message that was created by the webhook. Returns a `204 No Content` response on success."
+                    "description": "Deletes a message that was created by the webhook. Returns a `204 No Content` response on success.\r"
                 }
             }
         }
@@ -2990,7 +4314,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns an object with a valid WSS URL which the app can use when Connecting to the Gateway. Apps should cache this value and only call this endpoint to retrieve a new URL when they are unable to properly establish a connection using the cached one."
+                    "description": "Returns an object with a valid WSS URL which the app can use when Connecting to the Gateway. Apps should cache this value and only call this endpoint to retrieve a new URL when they are unable to properly establish a connection using the cached one.\r"
                 }
             }
         }
@@ -3018,7 +4342,7 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Returns an object based on the information in Get Gateway, plus additional metadata that can help during the operation of large or sharded bots. Unlike the Get Gateway, this route should not be cached for extended periods of time as the value is not guaranteed to be the same per-call, and changes as the bot joins/leaves guilds."
+                    "description": "Returns an object based on the information in Get Gateway, plus additional metadata that can help during the operation of large or sharded bots. Unlike the Get Gateway, this route should not be cached for extended periods of time as the value is not guaranteed to be the same per-call, and changes as the bot joins/leaves guilds.\r"
                 }
             }
         }
@@ -3036,6 +4360,23 @@ export const paths = {
                         }
                     },
                     "description": "Returns the bot's application object."
+                }
+            }
+        }
+    },
+    "/oauth2/@me": {
+        "get": {
+            "operationId": "getOauth2Me",
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns info about the current authorization. Requires authentication with a bearer token.\r"
                 }
             }
         }
@@ -3090,7 +4431,32 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Create a new global command. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object."
+                    "description": "Create a new global command. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object.\r"
+                }
+            }
+        },
+        "put": {
+            "operationId": "putApplicationsCommands",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
                 }
             }
         }
@@ -3126,6 +4492,39 @@ export const paths = {
                         }
                     },
                     "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "operationId": "patchApplicationsCommand",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "command_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Edit a global command. Returns `200` and an application command object. All fields are optional, but any fields provided will entirely overwrite the existing values of those fields.\r"
                 }
             }
         },
@@ -3229,7 +4628,40 @@ export const paths = {
                             }
                         }
                     },
-                    "description": "Create a new guild command. New guild commands will be available in the guild immediately. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object."
+                    "description": "Create a new guild command. New guild commands will be available in the guild immediately. Returns `201` if a command with the same name does not already exist, or a `200` if it does (in which case the previous command will be overwritten). Both responses include an application command object.\r"
+                }
+            }
+        },
+        "put": {
+            "operationId": "putApplicationsGuildsCommands",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "OK"
                 }
             }
         }
@@ -3273,6 +4705,47 @@ export const paths = {
                         }
                     },
                     "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "operationId": "patchApplicationsGuildsCommand",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "command_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Edit a guild command. Updates for guild commands will be available immediately. Returns `200` and an application command object. All fields are optional, but any fields provided will entirely overwrite the existing values of those fields.\r"
                 }
             }
         },
@@ -3390,6 +4863,47 @@ export const paths = {
         }
     },
     "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions": {
+        "get": {
+            "operationId": "getApplicationsGuildsCommandPermissions",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "guild_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "command_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuildApplicationCommandPermissions"
+                            }
+                        }
+                    },
+                    "description": "OK"
+                }
+            }
+        },
         "put": {
             "operationId": "putApplicationsGuildsCommandPermissions",
             "parameters": [
@@ -3434,7 +4948,7 @@ export const paths = {
     },
     "/interactions/{interaction_id}/{interaction_token}/callback": {
         "post": {
-            "operationId": "postInteractionsCallback",
+            "operationId": "postInteractionsInteractionTokenCallback",
             "parameters": [
                 {
                     "name": "interaction_id",
@@ -3468,8 +4982,41 @@ export const paths = {
         }
     },
     "/webhooks/{application_id}/{interaction_token}/messages/@original": {
+        "get": {
+            "operationId": "getWebhooksInteractionTokenMessagesOriginal",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "interaction_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns the initial Interaction response. Functions the same as Get Webhook Message."
+                }
+            }
+        },
         "patch": {
-            "operationId": "patchWebhooksMessagesOriginal",
+            "operationId": "patchWebhooksInteractionTokenMessagesOriginal",
             "parameters": [
                 {
                     "name": "application_id",
@@ -3500,11 +5047,44 @@ export const paths = {
                     "description": "Edits the initial Interaction response. Functions the same as Edit Webhook Message."
                 }
             }
+        },
+        "delete": {
+            "operationId": "deleteWebhooksInteractionTokenMessagesOriginal",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "interaction_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Deletes the initial Interaction response. Returns `204 No Content` on success."
+                }
+            }
         }
     },
     "/webhooks/{application_id}/{interaction_token}": {
         "post": {
-            "operationId": "postWebhook",
+            "operationId": "postWebhooksInteractionToken",
             "parameters": [
                 {
                     "name": "application_id",
@@ -3538,8 +5118,49 @@ export const paths = {
         }
     },
     "/webhooks/{application_id}/{interaction_token}/messages/{message_id}": {
+        "get": {
+            "operationId": "getWebhooksInteractionTokenMessage",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "interaction_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Returns a followup message for an Interaction. Functions the same as Get Webhook Message."
+                }
+            }
+        },
         "patch": {
-            "operationId": "patchWebhooksMessage",
+            "operationId": "patchWebhooksInteractionTokenMessage",
             "parameters": [
                 {
                     "name": "application_id",
@@ -3576,6 +5197,47 @@ export const paths = {
                         }
                     },
                     "description": "Edits a followup message for an Interaction. Functions the same as Edit Webhook Message."
+                }
+            }
+        },
+        "delete": {
+            "operationId": "deleteWebhooksInteractionTokenMessage",
+            "parameters": [
+                {
+                    "name": "application_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "interaction_token",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "message_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "Deletes a followup message for an Interaction. Returns `204 No Content` on success."
                 }
             }
         }
