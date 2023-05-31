@@ -9,11 +9,11 @@ export const Message = {
             "type": "string",
             "description": "id of the channel the message was sent in"
         },
-        "author\\*": {
+        "author": {
             "$ref": "User",
             "description": "the author of this message (not guaranteed to be a valid user, see below)"
         },
-        "content\\*\\*": {
+        "content": {
             "type": "string",
             "description": "contents of the message"
         },
@@ -43,15 +43,15 @@ export const Message = {
             "$ref": "Role",
             "description": "roles specifically mentioned in this message"
         },
-        "mention_channels\\*\\*\\*": {
+        "mention_channels": {
             "$ref": "ChannelMention",
             "description": "channels specifically mentioned in this message"
         },
-        "attachments\\*\\*": {
+        "attachments": {
             "$ref": "Attachment",
             "description": "any attached files"
         },
-        "embeds\\*\\*": {
+        "embeds": {
             "$ref": "Embed",
             "description": "any embedded content"
         },
@@ -60,7 +60,7 @@ export const Message = {
             "description": "reactions to the message"
         },
         "nonce": {
-            "type": "integer or string",
+            "type": "integer",
             "description": "used for validating a message was sent"
         },
         "pinned": {
@@ -95,7 +95,7 @@ export const Message = {
             "type": "integer",
             "description": "[message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field)"
         },
-        "referenced_message\\*\\*\\*\\*": {
+        "referenced_message": {
             "$ref": "Message",
             "description": "the message associated with the message_reference"
         },
@@ -107,7 +107,7 @@ export const Message = {
             "$ref": "Channel",
             "description": "the thread that was started from this message, includes [thread member](#DOCS_RESOURCES_CHANNEL/thread-member-object) object"
         },
-        "components\\*\\*": {
+        "components": {
             "$ref": "Component",
             "description": "sent if the message contains components like buttons, action rows, or other interactive components"
         },
@@ -131,20 +131,20 @@ export const Message = {
     "required": [
         "id",
         "channel_id",
-        "author\\*",
-        "content\\*\\*",
+        "author",
+        "content",
         "timestamp",
         "edited_timestamp",
         "tts",
         "mention_everyone",
         "mentions",
         "mention_roles",
-        "mention_channels\\*\\*\\*",
-        "attachments\\*\\*",
-        "embeds\\*\\*",
+        "mention_channels",
+        "attachments",
+        "embeds",
         "pinned",
         "type",
-        "referenced_message\\*\\*\\*\\*",
-        "components\\*\\*"
+        "referenced_message",
+        "components"
     ]
 }

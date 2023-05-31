@@ -1,11 +1,11 @@
 export const ThreadMember = {
     "type": "object",
     "properties": {
-        "id \\*": {
+        "id ": {
             "type": "string",
             "description": "ID of the thread"
         },
-        "user_id \\*": {
+        "user_id ": {
             "type": "string",
             "description": "ID of the user"
         },
@@ -18,16 +18,16 @@ export const ThreadMember = {
             "type": "integer",
             "description": "Any user-thread settings, currently only used for notifications"
         },
-        "member \\* \\*\\*": {
+        "member  ": {
             "$ref": "GuildMember",
             "description": "Additional information about the user"
         }
     },
     "required": [
-        "id \\*",
-        "user_id \\*",
+        "id ",
+        "user_id ",
         "join_timestamp",
         "flags",
-        "member \\* \\*\\*"
+        "member  "
     ]
 }

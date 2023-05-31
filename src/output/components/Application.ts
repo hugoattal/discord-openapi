@@ -18,8 +18,11 @@ export const Application = {
             "description": "the description of the app"
         },
         "rpc_origins": {
-            "type": "array of strings",
-            "description": "an array of rpc origin urls, if rpc is enabled"
+            "type": "array",
+            "description": "an array of rpc origin urls, if rpc is enabled",
+            "items": {
+                "type": "string"
+            }
         },
         "bot_public": {
             "type": "boolean",
@@ -70,8 +73,11 @@ export const Application = {
             "description": "the application's public [flags](#DOCS_RESOURCES_APPLICATION/application-object-application-flags)"
         },
         "tags": {
-            "type": "array of strings",
-            "description": "up to 5 tags describing the content and functionality of the application"
+            "type": "array",
+            "description": "up to 5 tags describing the content and functionality of the application",
+            "items": {
+                "type": "string"
+            }
         },
         "install_params": {
             "$ref": "InstallParams",

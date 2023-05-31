@@ -38,12 +38,18 @@ export const AutoModerationRule = {
             "description": "whether the rule is enabled"
         },
         "exempt_roles": {
-            "type": "array of snowflakes",
-            "description": "the role ids that should not be affected by the rule (Maximum of 20)"
+            "type": "array",
+            "description": "the role ids that should not be affected by the rule (Maximum of 20)",
+            "items": {
+                "type": "string"
+            }
         },
         "exempt_channels": {
-            "type": "array of snowflakes",
-            "description": "the channel ids that should not be affected by the rule (Maximum of 50)"
+            "type": "array",
+            "description": "the channel ids that should not be affected by the rule (Maximum of 50)",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "required": [

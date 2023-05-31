@@ -6,7 +6,7 @@ export const Emoji = {
             "description": "[emoji id](#DOCS_REFERENCE/image-formatting)"
         },
         "name": {
-            "type": "string (can be null only in reaction emoji objects)",
+            "type": "string",
             "description": "emoji name"
         },
         "roles": {

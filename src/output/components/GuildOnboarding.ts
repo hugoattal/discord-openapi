@@ -10,8 +10,11 @@ export const GuildOnboarding = {
             "description": "Prompts shown during onboarding and in customize community"
         },
         "default_channel_ids": {
-            "type": "array of snowflakes",
-            "description": "Channel IDs that members get opted into automatically"
+            "type": "array",
+            "description": "Channel IDs that members get opted into automatically",
+            "items": {
+                "type": "string"
+            }
         },
         "enabled": {
             "type": "boolean",

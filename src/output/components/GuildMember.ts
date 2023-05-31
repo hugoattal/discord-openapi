@@ -14,8 +14,11 @@ export const GuildMember = {
             "description": "the member's [guild avatar hash](#DOCS_REFERENCE/image-formatting)"
         },
         "roles": {
-            "type": "array of snowflakes",
-            "description": "array of [role](#DOCS_TOPICS_PERMISSIONS/role-object) object ids"
+            "type": "array",
+            "description": "array of [role](#DOCS_TOPICS_PERMISSIONS/role-object) object ids",
+            "items": {
+                "type": "string"
+            }
         },
         "joined_at": {
             "type": "string",

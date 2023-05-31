@@ -17,23 +17,23 @@ export const Integration = {
             "type": "boolean",
             "description": "is this integration enabled"
         },
-        "syncing \\*": {
+        "syncing ": {
             "type": "boolean",
             "description": "is this integration syncing"
         },
-        "role_id \\*": {
+        "role_id ": {
             "type": "string",
             "description": "id that this integration uses for \"subscribers\""
         },
-        "enable_emoticons \\*": {
+        "enable_emoticons ": {
             "type": "boolean",
             "description": "whether emoticons should be synced for this integration (twitch only currently)"
         },
-        "expire_behavior \\*": {
+        "expire_behavior ": {
             "type": "unknown",
             "description": "the behavior of expiring subscribers"
         },
-        "expire_grace_period \\*": {
+        "expire_grace_period ": {
             "type": "integer",
             "description": "the grace period (in days) before expiring subscribers"
         },
@@ -45,16 +45,16 @@ export const Integration = {
             "$ref": "IntegrationAccount",
             "description": "integration account information"
         },
-        "synced_at \\*": {
+        "synced_at ": {
             "type": "string",
             "description": "when this integration was last synced",
             "format": "date-time"
         },
-        "subscriber_count \\*": {
+        "subscriber_count ": {
             "type": "integer",
             "description": "how many subscribers this integration has"
         },
-        "revoked \\*": {
+        "revoked ": {
             "type": "boolean",
             "description": "has this integration been revoked"
         },
@@ -72,14 +72,14 @@ export const Integration = {
         "name",
         "type",
         "enabled",
-        "syncing \\*",
-        "role_id \\*",
-        "enable_emoticons \\*",
-        "expire_behavior \\*",
-        "expire_grace_period \\*",
+        "syncing ",
+        "role_id ",
+        "enable_emoticons ",
+        "expire_behavior ",
+        "expire_grace_period ",
         "account",
-        "synced_at \\*",
-        "subscriber_count \\*",
-        "revoked \\*"
+        "synced_at ",
+        "subscriber_count ",
+        "revoked "
     ]
 }

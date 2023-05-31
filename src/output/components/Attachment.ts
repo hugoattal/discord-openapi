@@ -37,7 +37,7 @@ export const Attachment = {
             "type": "integer",
             "description": "width of file (if image)"
         },
-        "ephemeral \\*": {
+        "ephemeral ": {
             "type": "boolean",
             "description": "whether this attachment is ephemeral"
         },
@@ -56,6 +56,6 @@ export const Attachment = {
         "size",
         "url",
         "proxy_url",
-        "ephemeral \\*"
+        "ephemeral "
     ]
 }

@@ -28,6 +28,7 @@ export function markdownToJSONObject(markdown: string): object {
 
         const isOptional = obj.field.endsWith("?");
         obj.field = obj.field.replace("?", "");
+        obj.field = obj.field.replaceAll("\\*", "");
 
         if (!isOptional) {
             required.push(obj.field);
@@ -35,6 +36,7 @@ export function markdownToJSONObject(markdown: string): object {
 
         if (obj.type === "snowflake") {
             obj.type = "string";
+            //obj.format = "snowflake";
         }
 
         if (obj.type === "ISO8601 timestamp") {
@@ -43,9 +45,6 @@ export function markdownToJSONObject(markdown: string): object {
         }
 
         if (obj.type.match(/#DOCS_/)) {
-            console.log(obj.type);
-            console.log(obj.type.match(/#DOCS_[\w_]+\/([\w-]+)-object/));
-
             const match = obj.type.match(/#DOCS_[\w_]+\/([\w-]+)/);
             if (match[1].endsWith("-object")) {
                 obj.$ref = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
@@ -56,11 +55,41 @@ export function markdownToJSONObject(markdown: string): object {
             }
         }
 
+        if (obj.type?.startsWith("array of ")) {
+            obj.items = {
+                type: obj.type.slice("array of ".length, -1)
+            };
+            obj.type = "array";
+
+            if (obj.items.type === "snowflake") {
+                obj.items.type = "string";
+                //obj.items.format = "snowflake";
+            }
+        }
+
+        if (obj.type?.startsWith("list of snowflakes")) {
+            obj.type = "array";
+            obj.items = {
+                type: "string"
+                //format: "snowflake"
+            };
+        }
+
+        if (obj.type?.includes(" or ")) {
+            obj.type = obj.type.split(" or ")[0];
+        }
+
+        if (obj.type && typeof obj.type === "string") {
+            //console.log(obj.type);
+            obj.type = obj.type.split(" ")[0].toLowerCase();
+        }
+
         properties[obj.field] = _.pickBy({
             type: obj.type,
             $ref: obj.$ref,
             description: obj.description,
-            format: obj.format
+            format: obj.format,
+            items: obj.items
         }, _.identity);
     });
 

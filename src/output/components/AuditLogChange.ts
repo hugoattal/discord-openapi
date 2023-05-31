@@ -2,11 +2,11 @@ export const AuditLogChange = {
     "type": "object",
     "properties": {
         "new_value": {
-            "type": "mixed (matches object field's type)",
+            "type": "mixed",
             "description": "New value of the key"
         },
         "old_value": {
-            "type": "mixed (matches object field's type)",
+            "type": "mixed",
             "description": "Old value of the key"
         },
         "key": {

@@ -45,7 +45,7 @@ export const Channel = {
             "type": "integer",
             "description": "the user limit of the voice channel"
         },
-        "rate_limit_per_user\\*": {
+        "rate_limit_per_user": {
             "type": "integer",
             "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected"
         },
@@ -86,7 +86,7 @@ export const Channel = {
             "type": "integer",
             "description": "the camera [video quality mode](#DOCS_RESOURCES_CHANNEL/channel-object-video-quality-modes) of the voice channel, 1 when not present"
         },
-        "message_count\\*\\*": {
+        "message_count": {
             "type": "integer",
             "description": "number of messages (not including the initial message or deleted messages) in a thread."
         },
@@ -123,8 +123,11 @@ export const Channel = {
             "description": "the set of tags that can be used in a `GUILD_FORUM` channel"
         },
         "applied_tags": {
-            "type": "array of snowflakes",
-            "description": "the IDs of the set of tags that have been applied to a thread in a `GUILD_FORUM` channel"
+            "type": "array",
+            "description": "the IDs of the set of tags that have been applied to a thread in a `GUILD_FORUM` channel",
+            "items": {
+                "type": "string"
+            }
         },
         "default_reaction_emoji": {
             "$ref": "DefaultReaction",
@@ -146,7 +149,7 @@ export const Channel = {
     "required": [
         "id",
         "type",
-        "rate_limit_per_user\\*",
-        "message_count\\*\\*"
+        "rate_limit_per_user",
+        "message_count"
     ]
 }

@@ -6,12 +6,18 @@ export const PromptOption = {
             "description": "ID of the prompt option"
         },
         "channel_ids": {
-            "type": "array of snowflakes",
-            "description": "IDs for channels a member is added to when the option is selected"
+            "type": "array",
+            "description": "IDs for channels a member is added to when the option is selected",
+            "items": {
+                "type": "string"
+            }
         },
         "role_ids": {
-            "type": "array of snowflakes",
-            "description": "IDs for roles assigned to a member when the option is selected"
+            "type": "array",
+            "description": "IDs for roles assigned to a member when the option is selected",
+            "items": {
+                "type": "string"
+            }
         },
         "emoji": {
             "$ref": "Emoji",

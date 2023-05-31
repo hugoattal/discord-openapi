@@ -2,8 +2,11 @@ export const InstallParams = {
     "type": "object",
     "properties": {
         "scopes": {
-            "type": "array of strings",
-            "description": "the [scopes](#DOCS_TOPICS_OAUTH2/shared-resources-oauth2-scopes) to add the application to the server with"
+            "type": "array",
+            "description": "the [scopes](#DOCS_TOPICS_OAUTH2/shared-resources-oauth2-scopes) to add the application to the server with",
+            "items": {
+                "type": "string"
+            }
         },
         "permissions": {
             "type": "string",

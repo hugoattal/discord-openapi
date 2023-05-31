@@ -17,7 +17,7 @@ export const Sticker = {
             "type": "string",
             "description": "description of the sticker"
         },
-        "tags\\*": {
+        "tags": {
             "type": "string",
             "description": "autocomplete/suggestion tags for the sticker (max 200 characters)"
         },
@@ -54,7 +54,7 @@ export const Sticker = {
         "id",
         "name",
         "description",
-        "tags\\*",
+        "tags",
         "type",
         "format_type"
     ]
