@@ -408,7 +408,167 @@
             },
             "Channel": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "the id of this channel"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "the [type of channel](#DOCS_RESOURCES_CHANNEL/channel-object-channel-types)"
+                    },
+                    "guild_id": {
+                        "type": "string",
+                        "description": "the id of the guild (may be missing for some channel objects received over gateway guild dispatches)"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "sorting position of the channel"
+                    },
+                    "permission_overwrites": {
+                        "type": "array",
+                        "description": "explicit permission overwrites for members and roles",
+                        "items": {
+                            "$ref": "#/components/schemas/Overwrite"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the channel (1-100 characters)"
+                    },
+                    "topic": {
+                        "type": "string",
+                        "description": "the channel topic (0-4096 characters for `GUILD_FORUM` channels, 0-1024 characters for all others)"
+                    },
+                    "nsfw": {
+                        "type": "boolean",
+                        "description": "whether the channel is nsfw"
+                    },
+                    "last_message_id": {
+                        "type": "string",
+                        "description": "the id of the last message sent in this channel (or thread for `GUILD_FORUM` channels) (may not point to an existing or valid message or thread)"
+                    },
+                    "bitrate": {
+                        "type": "integer",
+                        "description": "the bitrate (in bits) of the voice channel"
+                    },
+                    "user_limit": {
+                        "type": "integer",
+                        "description": "the user limit of the voice channel"
+                    },
+                    "rate_limit_per_user": {
+                        "type": "integer",
+                        "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected"
+                    },
+                    "recipients": {
+                        "type": "array",
+                        "description": "the recipients of the DM",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "icon hash of the group DM"
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "description": "id of the creator of the group DM or thread"
+                    },
+                    "application_id": {
+                        "type": "string",
+                        "description": "application id of the group DM creator if it is bot-created"
+                    },
+                    "managed": {
+                        "type": "boolean",
+                        "description": "for group DM channels: whether the channel is managed by an application via the `gdm.join` OAuth2 scope"
+                    },
+                    "parent_id": {
+                        "type": "string",
+                        "description": "for guild channels: id of the parent category for a channel (each parent category can contain up to 50 channels), for threads: id of the text channel this thread was created"
+                    },
+                    "last_pin_timestamp": {
+                        "type": "string",
+                        "description": "when the last pinned message was pinned. This may be `null` in events such as `GUILD_CREATE` when a message is not pinned.",
+                        "format": "date-time"
+                    },
+                    "rtc_region": {
+                        "type": "string",
+                        "description": "[voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id for the voice channel, automatic when set to null"
+                    },
+                    "video_quality_mode": {
+                        "type": "integer",
+                        "description": "the camera [video quality mode](#DOCS_RESOURCES_CHANNEL/channel-object-video-quality-modes) of the voice channel, 1 when not present"
+                    },
+                    "message_count": {
+                        "type": "integer",
+                        "description": "number of messages (not including the initial message or deleted messages) in a thread."
+                    },
+                    "member_count": {
+                        "type": "integer",
+                        "description": "an approximate count of users in a thread, stops counting at 50"
+                    },
+                    "thread_metadata": {
+                        "$ref": "#/components/schemas/ThreadMetadata",
+                        "description": "thread-specific fields not needed by other channels"
+                    },
+                    "member": {
+                        "$ref": "#/components/schemas/ThreadMember",
+                        "description": "thread member object for the current user, if they have joined the thread, only included on certain API endpoints"
+                    },
+                    "default_auto_archive_duration": {
+                        "type": "integer",
+                        "description": "default duration, copied onto newly created threads, in minutes, threads will stop showing in the channel list after the specified period of inactivity, can be set to: 60, 1440, 4320, 10080"
+                    },
+                    "permissions": {
+                        "type": "string",
+                        "description": "computed permissions for the invoking user in the channel, including overwrites, only included when part of the `resolved` data received on a slash command interaction"
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "[channel flags](#DOCS_RESOURCES_CHANNEL/channel-object-channel-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field)"
+                    },
+                    "total_message_sent": {
+                        "type": "integer",
+                        "description": "number of messages ever sent in a thread, it's similar to `message_count` on message creation, but will not decrement the number when a message is deleted"
+                    },
+                    "available_tags": {
+                        "type": "array",
+                        "description": "the set of tags that can be used in a `GUILD_FORUM` channel",
+                        "items": {
+                            "$ref": "#/components/schemas/ForumTag"
+                        }
+                    },
+                    "applied_tags": {
+                        "type": "array",
+                        "description": "the IDs of the set of tags that have been applied to a thread in a `GUILD_FORUM` channel",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "default_reaction_emoji": {
+                        "$ref": "#/components/schemas/DefaultReaction",
+                        "description": "the emoji to show in the add reaction button on a thread in a `GUILD_FORUM` channel"
+                    },
+                    "default_thread_rate_limit_per_user": {
+                        "type": "integer",
+                        "description": "the initial `rate_limit_per_user` to set on newly created threads in a channel. this field is copied to the thread at creation time and does not live update."
+                    },
+                    "default_sort_order": {
+                        "type": "integer",
+                        "description": "the [default sort order type](#DOCS_RESOURCES_CHANNEL/channel-object-sort-order-types) used to order posts in `GUILD_FORUM` channels. Defaults to `null`, which indicates a preferred sort order hasn't been set by a channel admin"
+                    },
+                    "default_forum_layout": {
+                        "type": "integer",
+                        "description": "the [default forum layout view](#DOCS_RESOURCES_CHANNEL/channel-object-forum-layout-types) used to display posts in `GUILD_FORUM` channels. Defaults to `0`, which indicates a layout view has not been set by a channel admin"
+                    }
+                },
+                "required": [
+                    "id",
+                    "type",
+                    "rate_limit_per_user",
+                    "message_count"
+                ]
             },
             "SortOrder": {
                 "type": "object",
@@ -420,11 +580,196 @@
             },
             "Message": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id of the message"
+                    },
+                    "channel_id": {
+                        "type": "string",
+                        "description": "id of the channel the message was sent in"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/User",
+                        "description": "the author of this message (not guaranteed to be a valid user, see below)"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "contents of the message"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "description": "when this message was sent",
+                        "format": "date-time"
+                    },
+                    "edited_timestamp": {
+                        "type": "string",
+                        "description": "when this message was edited (or null if never)",
+                        "format": "date-time"
+                    },
+                    "tts": {
+                        "type": "boolean",
+                        "description": "whether this was a TTS message"
+                    },
+                    "mention_everyone": {
+                        "type": "boolean",
+                        "description": "whether this message mentions everyone"
+                    },
+                    "mentions": {
+                        "type": "array",
+                        "description": "users specifically mentioned in the message",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "mention_roles": {
+                        "type": "array",
+                        "description": "roles specifically mentioned in this message",
+                        "items": {
+                            "$ref": "#/components/schemas/Role"
+                        }
+                    },
+                    "mention_channels": {
+                        "type": "array",
+                        "description": "channels specifically mentioned in this message",
+                        "items": {
+                            "$ref": "#/components/schemas/ChannelMention"
+                        }
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "any attached files",
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    },
+                    "embeds": {
+                        "type": "array",
+                        "description": "any embedded content",
+                        "items": {
+                            "$ref": "#/components/schemas/Embed"
+                        }
+                    },
+                    "reactions": {
+                        "type": "array",
+                        "description": "reactions to the message",
+                        "items": {
+                            "$ref": "#/components/schemas/Reaction"
+                        }
+                    },
+                    "nonce": {
+                        "type": "integer",
+                        "description": "used for validating a message was sent"
+                    },
+                    "pinned": {
+                        "type": "boolean",
+                        "description": "whether this message is pinned"
+                    },
+                    "webhook_id": {
+                        "type": "string",
+                        "description": "if the message is generated by a webhook, this is the webhook's id"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "[type of message](#DOCS_RESOURCES_CHANNEL/message-object-message-types)"
+                    },
+                    "activity": {
+                        "type": "object",
+                        "description": "sent with Rich Presence-related chat embeds"
+                    },
+                    "application": {
+                        "$ref": "#/components/schemas/Application",
+                        "description": "sent with Rich Presence-related chat embeds"
+                    },
+                    "application_id": {
+                        "type": "string",
+                        "description": "if the message is an [Interaction](#DOCS_INTERACTIONS_RECEIVING_AND_RESPONDING/) or application-owned webhook, this is the id of the application"
+                    },
+                    "message_reference": {
+                        "type": "object",
+                        "description": "data showing the source of a crosspost, channel follow add, pin, or reply message"
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "[message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field)"
+                    },
+                    "referenced_message": {
+                        "$ref": "#/components/schemas/Message",
+                        "description": "the message associated with the message_reference"
+                    },
+                    "interaction": {
+                        "type": "object",
+                        "description": "sent if the message is a response to an [Interaction](#DOCS_INTERACTIONS_RECEIVING_AND_RESPONDING/)"
+                    },
+                    "thread": {
+                        "$ref": "#/components/schemas/Channel",
+                        "description": "the thread that was started from this message, includes [thread member](#DOCS_RESOURCES_CHANNEL/thread-member-object) object"
+                    },
+                    "components": {
+                        "type": "array",
+                        "description": "sent if the message contains components like buttons, action rows, or other interactive components",
+                        "items": {
+                            "$ref": "#/components/schemas/Component"
+                        }
+                    },
+                    "sticker_items": {
+                        "type": "array",
+                        "description": "sent if the message contains stickers",
+                        "items": {
+                            "$ref": "#/components/schemas/StickerItem"
+                        }
+                    },
+                    "stickers": {
+                        "type": "array",
+                        "description": "**Deprecated** the stickers sent with the message",
+                        "items": {
+                            "$ref": "#/components/schemas/Sticker"
+                        }
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "A generally increasing integer (there may be gaps or duplicates) that represents the approximate position of the message in a thread, it can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread"
+                    },
+                    "role_subscription_data": {
+                        "$ref": "#/components/schemas/RoleSubscriptionData",
+                        "description": "data of the role subscription purchase or renewal that prompted this ROLE_SUBSCRIPTION_PURCHASE message"
+                    }
+                },
+                "required": [
+                    "id",
+                    "channel_id",
+                    "author",
+                    "content",
+                    "timestamp",
+                    "edited_timestamp",
+                    "tts",
+                    "mention_everyone",
+                    "mentions",
+                    "mention_roles",
+                    "mention_channels",
+                    "attachments",
+                    "embeds",
+                    "pinned",
+                    "type",
+                    "referenced_message",
+                    "components"
+                ]
             },
             "MessageActivity": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "type": {
+                        "type": "integer",
+                        "description": "[type of message activity](#DOCS_RESOURCES_CHANNEL/message-object-message-activity-types)"
+                    },
+                    "party_id": {
+                        "type": "string",
+                        "description": "party_id from a [Rich Presence event](#DOCS_RICH_PRESENCE_HOW_TO/updating-presence-update-presence-payload-fields)"
+                    }
+                },
+                "required": [
+                    "type"
+                ]
             },
             "MessageReference": {
                 "type": "object",
@@ -637,7 +982,64 @@
             },
             "Embed": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "title of embed"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[type of embed](#DOCS_RESOURCES_CHANNEL/embed-object-embed-types) (always \"rich\" for webhook embeds)"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "description of embed"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "url of embed"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "description": "timestamp of embed content",
+                        "format": "date-time"
+                    },
+                    "color": {
+                        "type": "integer",
+                        "description": "color code of the embed"
+                    },
+                    "footer": {
+                        "type": "object",
+                        "description": "footer information"
+                    },
+                    "image": {
+                        "type": "object",
+                        "description": "image information"
+                    },
+                    "thumbnail": {
+                        "type": "object",
+                        "description": "thumbnail information"
+                    },
+                    "video": {
+                        "type": "object",
+                        "description": "video information"
+                    },
+                    "provider": {
+                        "type": "object",
+                        "description": "provider information"
+                    },
+                    "author": {
+                        "type": "object",
+                        "description": "author information"
+                    },
+                    "fields": {
+                        "type": "array",
+                        "description": "fields information",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
             },
             "EmbedThumbnail": {
                 "type": "object",
@@ -914,7 +1316,7 @@
                     "replied_user"
                 ]
             },
-            "RoleSubscriptionDataObject": {
+            "RoleSubscriptionData": {
                 "type": "object",
                 "properties": {
                     "role_subscription_listing_id": {
@@ -2144,7 +2546,64 @@
             },
             "Sticker": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "[id of the sticker](#DOCS_REFERENCE/image-formatting)"
+                    },
+                    "pack_id": {
+                        "type": "string",
+                        "description": "for standard stickers, id of the pack the sticker is from"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the sticker"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "description of the sticker"
+                    },
+                    "tags": {
+                        "type": "string",
+                        "description": "autocomplete/suggestion tags for the sticker (max 200 characters)"
+                    },
+                    "asset": {
+                        "type": "string",
+                        "description": "**Deprecated** previously the sticker asset hash, now an empty string"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "[type of sticker](#DOCS_RESOURCES_STICKER/sticker-object-sticker-types)"
+                    },
+                    "format_type": {
+                        "type": "integer",
+                        "description": "[type of sticker format](#DOCS_RESOURCES_STICKER/sticker-object-sticker-format-types)"
+                    },
+                    "available": {
+                        "type": "boolean",
+                        "description": "whether this guild sticker can be used, may be false due to loss of Server Boosts"
+                    },
+                    "guild_id": {
+                        "type": "string",
+                        "description": "id of the guild that owns this sticker"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User",
+                        "description": "the user that uploaded the guild sticker"
+                    },
+                    "sort_value": {
+                        "type": "integer",
+                        "description": "the standard sticker's sort order within its pack"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "tags",
+                    "type",
+                    "format_type"
+                ]
             },
             "StickerFormat": {
                 "type": "object",
@@ -2218,31 +2677,15 @@
             "Response": {
                 "type": "object",
                 "properties": {
-                    "application": {
-                        "$ref": "#/components/schemas/Application",
-                        "description": "the current application"
-                    },
-                    "scopes": {
+                    "sticker_packs": {
                         "type": "array",
-                        "description": "the scopes the user has authorized the application for",
                         "items": {
-                            "type": "string"
+                            "$ref": "#/components/schemas/StickerPack"
                         }
-                    },
-                    "expires": {
-                        "type": "string",
-                        "description": "when the access token expires",
-                        "format": "date-time"
-                    },
-                    "user": {
-                        "$ref": "#/components/schemas/User",
-                        "description": "the user who has authorized, if the user has authorized with the `identify` scope"
                     }
                 },
                 "required": [
-                    "application",
-                    "scopes",
-                    "expires"
+                    "sticker_packs"
                 ]
             },
             "User": {
@@ -2503,7 +2946,66 @@
             },
             "Webhook": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "the id of the webhook"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "the [type](#DOCS_RESOURCES_WEBHOOK/webhook-object-webhook-types) of the webhook"
+                    },
+                    "guild_id": {
+                        "type": "string",
+                        "description": "the guild id this webhook is for, if any"
+                    },
+                    "channel_id": {
+                        "type": "string",
+                        "description": "the channel id this webhook is for, if any"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User",
+                        "description": "the user this webhook was created by (not returned when getting a webhook with its token)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the default name of the webhook"
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "description": "the default user avatar [hash](#DOCS_REFERENCE/image-formatting) of the webhook"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "the secure token of the webhook (returned for Incoming Webhooks)"
+                    },
+                    "application_id": {
+                        "type": "string",
+                        "description": "the bot/OAuth2 application that created this webhook"
+                    },
+                    "source_guild *": {
+                        "$ref": "#/components/schemas/Guild",
+                        "description": "the guild of the channel that this webhook is following (returned for Channel Follower Webhooks)"
+                    },
+                    "source_channel *": {
+                        "$ref": "#/components/schemas/Channel",
+                        "description": "the channel that this webhook is following (returned for Channel Follower Webhooks)"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "the url used for executing the webhook (returned by the [webhooks](#DOCS_TOPICS_OAUTH2/webhooks) OAuth2 flow)"
+                    }
+                },
+                "required": [
+                    "id",
+                    "type",
+                    "channel_id",
+                    "name",
+                    "avatar",
+                    "application_id",
+                    "source_guild *",
+                    "source_channel *"
+                ]
             },
             "Device": {
                 "type": "object",
@@ -2795,7 +3297,76 @@
             },
             "Activity": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Activity's name"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "[Activity type](#DOCS_TOPICS_GATEWAY_EVENTS/activity-object-activity-types)"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "Stream URL, is validated when type is 1"
+                    },
+                    "created_at": {
+                        "type": "integer",
+                        "description": "Unix timestamp (in milliseconds) of when the activity was added to the user's session"
+                    },
+                    "timestamps": {
+                        "type": "object",
+                        "description": "Unix timestamps for start and/or end of the game"
+                    },
+                    "application_id": {
+                        "type": "string",
+                        "description": "Application ID for the game"
+                    },
+                    "details": {
+                        "type": "string",
+                        "description": "What the player is currently doing"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "User's current party status"
+                    },
+                    "emoji": {
+                        "type": "object",
+                        "description": "Emoji used for a custom status"
+                    },
+                    "party": {
+                        "type": "object",
+                        "description": "Information for the current party of the player"
+                    },
+                    "assets": {
+                        "type": "object",
+                        "description": "Images for the presence and their hover texts"
+                    },
+                    "secrets": {
+                        "type": "object",
+                        "description": "Secrets for Rich Presence joining and spectating"
+                    },
+                    "instance": {
+                        "type": "boolean",
+                        "description": "Whether or not the activity is an instanced game session"
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "[Activity flags](#DOCS_TOPICS_GATEWAY_EVENTS/activity-object-activity-flags) `OR`d together, describes what the payload includes"
+                    },
+                    "buttons": {
+                        "type": "array",
+                        "description": "Custom buttons shown in the Rich Presence (max 2)",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "type",
+                    "created_at"
+                ]
             },
             "Role": {
                 "type": "object",
@@ -3617,7 +4188,7 @@
                         "description": "RPC version"
                     },
                     "config": {
-                        "$ref": "#/components/schemas/RpcServerConfiguration",
+                        "$ref": "#/components/schemas/RPCServerConfiguration",
                         "description": "server configuration"
                     },
                     "user": {
@@ -4005,7 +4576,75 @@
             },
             "ApplicationCommand": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique ID of command"
+                    },
+                    "type": {
+                        "type": "object",
+                        "description": "[Type of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-types), defaults to `1`"
+                    },
+                    "application_id": {
+                        "type": "string",
+                        "description": "ID of the parent application"
+                    },
+                    "guild_id": {
+                        "type": "string",
+                        "description": "Guild ID of the command, if not global"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "[Name of command](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-object-application-command-naming), 1-32 characters"
+                    },
+                    "name_localizations": {
+                        "type": "object",
+                        "description": "Localization dictionary for `name` field. Values follow the same restrictions as `name`"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for `CHAT_INPUT` commands, 1-100 characters. Empty string for `USER` and `MESSAGE` commands"
+                    },
+                    "description_localizations": {
+                        "type": "object",
+                        "description": "Localization dictionary for `description` field. Values follow the same restrictions as `description`"
+                    },
+                    "options": {
+                        "type": "array",
+                        "description": "Parameters for the command, max of 25",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "default_member_permissions": {
+                        "type": "string",
+                        "description": "Set of [permissions](#DOCS_TOPICS_PERMISSIONS) represented as a bit set"
+                    },
+                    "dm_permission": {
+                        "type": "boolean",
+                        "description": "Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible."
+                    },
+                    "default_permission": {
+                        "type": "boolean",
+                        "description": "Not recommended for use as field will soon be deprecated. Indicates whether the command is enabled by default when the app is added to a guild, defaults to `true`"
+                    },
+                    "nsfw": {
+                        "type": "boolean",
+                        "description": "Indicates whether the command is [age-restricted](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/agerestricted-commands), defaults to `false`"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Autoincrementing version identifier updated during substantial record changes"
+                    }
+                },
+                "required": [
+                    "id",
+                    "application_id",
+                    "name",
+                    "description",
+                    "default_member_permissions",
+                    "version"
+                ]
             },
             "ApplicationCommandOption": {
                 "type": "object",

@@ -22,8 +22,16 @@ export function generate() {
             const line = lines[lineIndex].trim();
 
             if (line.startsWith("######") && (line.endsWith("Structure") || line.endsWith("Object") || line.endsWith("Types"))) {
-                const structureName = line.match(/# ([\w ]+) (Structure|Object|Types)/)[1].replaceAll(" ", "");
+                let structureName = line.match(/# ([\w ]+) (Structure|Object|Types)/)[1].replaceAll(" ", "");
                 lineIndex++;
+
+                if (structureName.endsWith("Object")) {
+                    structureName = structureName.slice(0, -6);
+                }
+
+                if (schemas[structureName]) {
+                    continue;
+                }
 
                 while (!lines[lineIndex].startsWith("|") && !lines[lineIndex].startsWith("#")) {
                     lineIndex++;
