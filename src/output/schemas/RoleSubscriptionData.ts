@@ -1,4 +1,4 @@
-export const RoleSubscriptionDataObject = {
+export const RoleSubscriptionData = {
     "type": "object",
     "properties": {
         "role_subscription_listing_id": {

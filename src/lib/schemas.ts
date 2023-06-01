@@ -68,7 +68,8 @@ export function markdownToSchema(markdown: string) {
             if (match[1].endsWith("-object")) {
                 let type = _.startCase(match[1].slice(0, -"-object".length)).replaceAll(" ", "");
 
-                ["DataModels", "Setcertifieddevices", "Setuservoicesettings", "Getvoicesettings", "Ready", "Models"].forEach(prefix => {
+
+                ["DataModels", "Setcertifieddevices", "Setuservoicesettings", "Getvoicesettings", "Ready", "Models", "StartThreadInForumChannel"].forEach(prefix => {
                     if (type.startsWith(prefix)) {
                         type = type.slice(prefix.length);
                     }

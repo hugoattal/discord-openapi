@@ -1343,6 +1343,62 @@
                     "is_renewal"
                 ]
             },
+            "ForumThreadMessageParams": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "Message contents (up to 2000 characters)"
+                    },
+                    "embeds": {
+                        "type": "array",
+                        "description": "Up to 10 `rich` embeds (up to 6000 characters)",
+                        "items": {
+                            "$ref": "#/components/schemas/Embed"
+                        }
+                    },
+                    "allowed_mentions": {
+                        "$ref": "#/components/schemas/AllowedMentions",
+                        "description": "Allowed mentions for the message"
+                    },
+                    "components": {
+                        "type": "array",
+                        "description": "Components to include with the message",
+                        "items": {
+                            "$ref": "#/components/schemas/Component"
+                        }
+                    },
+                    "sticker_ids": {
+                        "type": "array",
+                        "description": "IDs of up to 3 [stickers](#DOCS_RESOURCES_STICKER/sticker-object) in the server to send in the message",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "payload_json": {
+                        "type": "string",
+                        "description": "JSON-encoded body of non-file params, only for `multipart/form-data` requests. See [Uploading Files](#DOCS_REFERENCE/uploading-files)"
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "Attachment objects with `filename` and `description`. See [Uploading Files](#DOCS_REFERENCE/uploading-files)",
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "[Message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field) (only `SUPPRESS_EMBEDS` and `SUPPRESS_NOTIFICATIONS` can be set)"
+                    }
+                },
+                "required": [
+                    "content",
+                    "embeds",
+                    "components",
+                    "sticker_ids",
+                    "files"
+                ]
+            },
             "Emoji": {
                 "type": "object",
                 "properties": {
@@ -2131,6 +2187,14 @@
                 "type": "object",
                 "properties": {}
             },
+            "ExamplePartialChannel": {
+                "type": "object",
+                "properties": {}
+            },
+            "ExamplePartialInvite": {
+                "type": "object",
+                "properties": {}
+            },
             "GuildScheduledEvent": {
                 "type": "object",
                 "properties": {
@@ -2608,6 +2672,20 @@
                     "name",
                     "sku_id",
                     "description"
+                ]
+            },
+            "Response": {
+                "type": "object",
+                "properties": {
+                    "sticker_packs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StickerPack"
+                        }
+                    }
+                },
+                "required": [
+                    "sticker_packs"
                 ]
             },
             "User": {
@@ -4840,6 +4918,10 @@
                 "type": "object",
                 "properties": {}
             },
+            "ExampleResolved": {
+                "type": "object",
+                "properties": {}
+            },
             "TextInput": {
                 "type": "object",
                 "properties": {
@@ -5688,6 +5770,81 @@
                         },
                         "description": "Post a message to a guild text or DM channel. Returns a message object. Fires a Message Create Gateway event. See message formatting for more information on how to properly format messages.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Message contents (up to 2000 characters)"
+                                    },
+                                    "nonce": {
+                                        "type": "integer",
+                                        "description": "Can be used to verify a message was sent (up to 25 characters). Value will appear in the [Message Create event](#DOCS_TOPICS_GATEWAY_EVENTS/message-create)."
+                                    },
+                                    "tts": {
+                                        "type": "boolean",
+                                        "description": "`true` if this is a TTS message"
+                                    },
+                                    "embeds": {
+                                        "type": "array",
+                                        "description": "Up to 10 `rich` embeds (up to 6000 characters)",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Embed"
+                                        }
+                                    },
+                                    "allowed_mentions": {
+                                        "$ref": "#/components/schemas/AllowedMentions",
+                                        "description": "Allowed mentions for the message"
+                                    },
+                                    "message_reference": {
+                                        "type": "object",
+                                        "description": "Include to make your message a reply"
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "description": "Components to include with the message",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Component"
+                                        }
+                                    },
+                                    "sticker_ids": {
+                                        "type": "array",
+                                        "description": "IDs of up to 3 [stickers](#DOCS_RESOURCES_STICKER/sticker-object) in the server to send in the message",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "payload_json": {
+                                        "type": "string",
+                                        "description": "JSON-encoded body of non-file params, only for `multipart/form-data` requests. See [Uploading Files](#DOCS_REFERENCE/uploading-files)"
+                                    },
+                                    "attachments": {
+                                        "type": "array",
+                                        "description": "Attachment objects with filename and description. See [Uploading Files](#DOCS_REFERENCE/uploading-files)",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Attachment"
+                                        }
+                                    },
+                                    "flags": {
+                                        "type": "integer",
+                                        "description": "[Message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field) (only `SUPPRESS_EMBEDS` and `SUPPRESS_NOTIFICATIONS` can be set)"
+                                    }
+                                },
+                                "required": [
+                                    "content",
+                                    "embeds",
+                                    "components",
+                                    "sticker_ids",
+                                    "files"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -5756,6 +5913,65 @@
                         },
                         "description": "Edit a previously sent message. The fields `content`, `embeds`, and `flags` can be edited by the original message author. Other users can only edit `flags` and only if they have the `MANAGE_MESSAGES` permission in the corresponding channel. When specifying flags, ensure to include all previously set flags/bits in addition to ones that you are modifying. Only `flags` documented in the table below may be modified by users (unsupported flag changes are currently ignored without error).\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Message contents (up to 2000 characters)"
+                                    },
+                                    "embeds": {
+                                        "type": "array",
+                                        "description": "Up to 10 `rich` embeds (up to 6000 characters)",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Embed"
+                                        }
+                                    },
+                                    "flags": {
+                                        "type": "integer",
+                                        "description": "Edit the [flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) of a message (only `SUPPRESS_EMBEDS` can currently be set/unset)"
+                                    },
+                                    "allowed_mentions": {
+                                        "$ref": "#/components/schemas/AllowedMentions",
+                                        "description": "Allowed mentions for the message"
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "description": "Components to include with the message",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Component"
+                                        }
+                                    },
+                                    "payload_json": {
+                                        "type": "string",
+                                        "description": "JSON-encoded body of non-file params (multipart/form-data only). See [Uploading Files](#DOCS_REFERENCE/uploading-files)"
+                                    },
+                                    "attachments": {
+                                        "type": "array",
+                                        "description": "Attached files to keep and possible descriptions for new files. See [Uploading Files](#DOCS_REFERENCE/uploading-files)",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Attachment"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "content",
+                                    "embeds",
+                                    "flags",
+                                    "allowed_mentions",
+                                    "components",
+                                    "files",
+                                    "payload_json",
+                                    "attachments"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {
@@ -6681,6 +6897,46 @@
                         },
                         "description": "Creates a new thread in a forum channel, and sends a message within the created thread. Returns a channel, with a nested message object, on success, and a 400 BAD REQUEST on invalid parameters. Fires a Thread Create and Message Create Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "1-100 character channel name"
+                                    },
+                                    "auto_archive_duration": {
+                                        "type": "integer",
+                                        "description": "duration in minutes to automatically archive the thread after recent activity, can be set to: 60, 1440, 4320, 10080"
+                                    },
+                                    "rate_limit_per_user": {
+                                        "type": "integer",
+                                        "description": "amount of seconds a user has to wait before sending another message (0-21600)"
+                                    },
+                                    "message": {
+                                        "$ref": "#/components/schemas/ForumThreadMessageParams",
+                                        "description": "contents of the first message in the forum thread"
+                                    },
+                                    "applied_tags": {
+                                        "type": "array",
+                                        "description": "the IDs of the set of tags that have been applied to a thread in a `GUILD_FORUM` channel",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "auto_archive_duration",
+                                    "message"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -9526,6 +9782,31 @@
             }
         },
         "/guilds/templates/{template_code}": {
+            "get": {
+                "operationId": "getGuildsTemplatesTemplateCode",
+                "parameters": [
+                    {
+                        "name": "template_code",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GuildTemplate"
+                                }
+                            }
+                        },
+                        "description": "Returns a guild template object for the given code."
+                    }
+                }
+            },
             "post": {
                 "operationId": "postGuildsTemplatesTemplateCode",
                 "parameters": [
@@ -10069,6 +10350,36 @@
                         },
                         "description": "Create a new sticker for the guild. Send a `multipart/form-data` body. Requires the `MANAGE_GUILD_EXPRESSIONS` permission. Returns the new sticker object on success. Fires a Guild Stickers Update Gateway event.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "name of the sticker (2-30 characters)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "description of the sticker (empty or 2-100 characters)"
+                                    },
+                                    "tags": {
+                                        "type": "string",
+                                        "description": "autocomplete/suggestion tags for the sticker (max 200 characters)"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "tags",
+                                    "file"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -10867,6 +11178,85 @@
                         },
                         "description": "OK"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "type": "string",
+                                        "description": "the message contents (up to 2000 characters)"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "description": "override the default username of the webhook"
+                                    },
+                                    "avatar_url": {
+                                        "type": "string",
+                                        "description": "override the default avatar of the webhook"
+                                    },
+                                    "tts": {
+                                        "type": "boolean",
+                                        "description": "true if this is a TTS message"
+                                    },
+                                    "embeds": {
+                                        "type": "array",
+                                        "description": "embedded `rich` content",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Embed"
+                                        }
+                                    },
+                                    "allowed_mentions": {
+                                        "$ref": "#/components/schemas/AllowedMentions",
+                                        "description": "allowed mentions for the message"
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "description": "the components to include with the message",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Component"
+                                        }
+                                    },
+                                    "payload_json": {
+                                        "type": "string",
+                                        "description": "JSON encoded body of non-file params"
+                                    },
+                                    "attachments": {
+                                        "type": "array",
+                                        "description": "attachment objects with filename and description",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Attachment"
+                                        }
+                                    },
+                                    "flags": {
+                                        "type": "integer",
+                                        "description": "[message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field) (only `SUPPRESS_EMBEDS` can be set)"
+                                    },
+                                    "thread_name": {
+                                        "type": "string",
+                                        "description": "name of thread to create (requires the webhook channel to be a forum channel)"
+                                    }
+                                },
+                                "required": [
+                                    "content",
+                                    "username",
+                                    "avatar_url",
+                                    "tts",
+                                    "embeds",
+                                    "allowed_mentions",
+                                    "components",
+                                    "files",
+                                    "payload_json",
+                                    "attachments",
+                                    "flags",
+                                    "thread_name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             }
         },
@@ -10951,6 +11341,60 @@
                         },
                         "description": "Edits a previously-sent webhook message from the same token. Returns a message object on success.\r"
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "type": "string",
+                                        "description": "the message contents (up to 2000 characters)"
+                                    },
+                                    "embeds": {
+                                        "type": "array",
+                                        "description": "embedded `rich` content",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Embed"
+                                        }
+                                    },
+                                    "allowed_mentions": {
+                                        "$ref": "#/components/schemas/AllowedMentions",
+                                        "description": "allowed mentions for the message"
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "description": "the components to include with the message",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Component"
+                                        }
+                                    },
+                                    "payload_json": {
+                                        "type": "string",
+                                        "description": "JSON encoded body of non-file params (multipart/form-data only)"
+                                    },
+                                    "attachments": {
+                                        "type": "array",
+                                        "description": "attached files to keep and possible descriptions for new files",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Attachment"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "content",
+                                    "embeds",
+                                    "allowed_mentions",
+                                    "components",
+                                    "files",
+                                    "payload_json",
+                                    "attachments"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
                 }
             },
             "delete": {

@@ -57,7 +57,17 @@ export function generate() {
                 fs.writeFileSync(`./src/output/schemas/${ structureName }.ts`,
                     `export const ${ structureName } = ${ JSON.stringify(schemas[structureName], null, 4) };\n`
                 );
+
+                lineIndex--;
             }
+
+            lineIndex++;
+        }
+
+        lineIndex = 0;
+
+        while (lineIndex < lines.length) {
+            const line = lines[lineIndex].trim();
 
             if (line.match(/^#+ [\w ]+ %/)) {
                 const match = line.match(/^#+ [\w ]+ % ([A-Z]+) (.+)/);

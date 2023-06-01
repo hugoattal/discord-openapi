@@ -51,9 +51,9 @@ export function markdownToPath(extract: {description: string; endpoint: string; 
             || line.startsWith("Delete"))
         ?.replaceAll(/\[([\w` ]+)]\([a-zA-Z#_/-]+\)/g, "$1");
 
-    if (extract.description.includes("# JSON Params")) {
+    if (extract.description.match("# (JSON|Form|JSON/Form) Params")) {
         const lines = extract.description.trim().split("\n");
-        let index = lines.findLastIndex((line) => line.includes("# JSON Params"));
+        let index = lines.findLastIndex((line) => line.match("# (JSON|Form|JSON/Form) Params"));
         let markdown = "";
 
         while (!lines[index].startsWith("|")) {
