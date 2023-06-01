@@ -46,10 +46,6 @@ export const Device = {
         "id",
         "vendor",
         "model",
-        "related",
-        "echo_cancellation",
-        "noise_suppression",
-        "automatic_gain_control",
-        "hardware_mute"
+        "related"
     ]
 };

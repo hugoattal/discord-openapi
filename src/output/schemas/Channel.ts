@@ -157,8 +157,6 @@ export const Channel = {
     },
     "required": [
         "id",
-        "type",
-        "rate_limit_per_user",
-        "message_count"
+        "type"
     ]
 };

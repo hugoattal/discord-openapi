@@ -66,10 +66,7 @@ export const Interaction = {
         "id",
         "application_id",
         "type",
-        "data",
-        "member",
         "token",
-        "version",
-        "locale"
+        "version"
     ]
 };

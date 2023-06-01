@@ -34,7 +34,7 @@ export function markdownToSchema(markdown: string) {
             return;
         }
 
-        const isOptional = obj.field.endsWith("?");
+        const isOptional = obj.field.includes("?");
         obj.field = obj.field.match(/([\w -]+)/)[1].trim();
         obj.type = obj.type.match(/([\w [\]()#/-]+)/)[1].trim();
 

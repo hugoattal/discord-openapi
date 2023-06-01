@@ -398,8 +398,7 @@
                     }
                 },
                 "required": [
-                    "type",
-                    "metadata"
+                    "type"
                 ]
             },
             "Action": {
@@ -565,9 +564,7 @@
                 },
                 "required": [
                     "id",
-                    "type",
-                    "rate_limit_per_user",
-                    "message_count"
+                    "type"
                 ]
             },
             "SortOrder": {
@@ -746,13 +743,10 @@
                     "mention_everyone",
                     "mentions",
                     "mention_roles",
-                    "mention_channels",
                     "attachments",
                     "embeds",
                     "pinned",
-                    "type",
-                    "referenced_message",
-                    "components"
+                    "type"
                 ]
             },
             "MessageActivity": {
@@ -790,10 +784,7 @@
                         "type": "boolean",
                         "description": "when sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true"
                     }
-                },
-                "required": [
-                    "channel_id"
-                ]
+                }
             },
             "FollowedChannel": {
                 "type": "object",
@@ -924,11 +915,8 @@
                     }
                 },
                 "required": [
-                    "id",
-                    "user_id",
                     "join_timestamp",
-                    "flags",
-                    "member"
+                    "flags"
                 ]
             },
             "DefaultReaction": {
@@ -1245,8 +1233,7 @@
                     "filename",
                     "size",
                     "url",
-                    "proxy_url",
-                    "ephemeral"
+                    "proxy_url"
                 ]
             },
             "ChannelMention": {
@@ -1392,10 +1379,6 @@
                     }
                 },
                 "required": [
-                    "content",
-                    "embeds",
-                    "components",
-                    "sticker_ids",
                     "files"
                 ]
             },
@@ -1637,10 +1620,7 @@
                     "icon",
                     "splash",
                     "discovery_splash",
-                    "owner",
                     "owner_id",
-                    "permissions",
-                    "region",
                     "afk_channel_id",
                     "afk_timeout",
                     "verification_level",
@@ -1939,15 +1919,7 @@
                     "name",
                     "type",
                     "enabled",
-                    "syncing",
-                    "role_id",
-                    "enable_emoticons",
-                    "expire_behavior",
-                    "expire_grace_period",
-                    "account",
-                    "synced_at",
-                    "subscriber_count",
-                    "revoked"
+                    "account"
                 ]
             },
             "IntegrationAccount": {
@@ -2269,7 +2241,6 @@
                     "id",
                     "guild_id",
                     "channel_id",
-                    "creator_id",
                     "name",
                     "scheduled_start_time",
                     "scheduled_end_time",
@@ -3002,9 +2973,7 @@
                     "channel_id",
                     "name",
                     "avatar",
-                    "application_id",
-                    "source_guild",
-                    "source_channel"
+                    "application_id"
                 ]
             },
             "Device": {
@@ -3055,11 +3024,7 @@
                     "id",
                     "vendor",
                     "model",
-                    "related",
-                    "echo_cancellation",
-                    "noise_suppression",
-                    "automatic_gain_control",
-                    "hardware_mute"
+                    "related"
                 ]
             },
             "Vendor": {
@@ -4718,8 +4683,7 @@
                 "required": [
                     "type",
                     "name",
-                    "description",
-                    "autocomplete"
+                    "description"
                 ]
             },
             "ApplicationCommandOptionChoice": {
@@ -4880,9 +4844,7 @@
                 },
                 "required": [
                     "type",
-                    "custom_id",
-                    "options",
-                    "channel_types"
+                    "custom_id"
                 ]
             },
             "SelectOption": {
@@ -5037,11 +4999,8 @@
                     "id",
                     "application_id",
                     "type",
-                    "data",
-                    "member",
                     "token",
-                    "version",
-                    "locale"
+                    "version"
                 ]
             },
             "ApplicationCommandData": {
@@ -5082,8 +5041,7 @@
                 "required": [
                     "id",
                     "name",
-                    "type",
-                    "options"
+                    "type"
                 ]
             },
             "MessageComponentData": {
@@ -5107,8 +5065,7 @@
                 },
                 "required": [
                     "custom_id",
-                    "component_type",
-                    "values"
+                    "component_type"
                 ]
             },
             "ModalSubmitData": {
@@ -5158,11 +5115,7 @@
                         "$ref": "#/components/schemas/Attachment",
                         "description": "the ids and attachment objects"
                     }
-                },
-                "required": [
-                    "members",
-                    "channels"
-                ]
+                }
             },
             "ApplicationCommandInteractionDataOption": {
                 "type": "object",
@@ -5442,7 +5395,6 @@
                                     "name",
                                     "event_type",
                                     "trigger_type",
-                                    "trigger_metadata",
                                     "actions"
                                 ]
                             }
@@ -5565,7 +5517,6 @@
                                 "required": [
                                     "name",
                                     "event_type",
-                                    "trigger_metadata",
                                     "actions",
                                     "enabled",
                                     "exempt_roles",
@@ -5833,14 +5784,7 @@
                                         "type": "integer",
                                         "description": "[Message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field) (only `SUPPRESS_EMBEDS` and `SUPPRESS_NOTIFICATIONS` can be set)"
                                     }
-                                },
-                                "required": [
-                                    "content",
-                                    "embeds",
-                                    "components",
-                                    "sticker_ids",
-                                    "files"
-                                ]
+                                }
                             }
                         }
                     },
@@ -6930,7 +6874,6 @@
                                 },
                                 "required": [
                                     "name",
-                                    "auto_archive_duration",
                                     "message"
                                 ]
                             }
@@ -9568,12 +9511,9 @@
                                     }
                                 },
                                 "required": [
-                                    "channel_id",
-                                    "entity_metadata",
                                     "name",
                                     "privacy_level",
                                     "scheduled_start_time",
-                                    "scheduled_end_time",
                                     "entity_type"
                                 ]
                             }
@@ -9697,12 +9637,7 @@
                                         "type": "object",
                                         "description": "the cover image of the scheduled event"
                                     }
-                                },
-                                "required": [
-                                    "channel_id",
-                                    "scheduled_end_time",
-                                    "entity_type"
-                                ]
+                                }
                             }
                         }
                     },
@@ -10147,8 +10082,7 @@
                                 },
                                 "required": [
                                     "channel_id",
-                                    "topic",
-                                    "send_start_notification"
+                                    "topic"
                                 ]
                             }
                         }

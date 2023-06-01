@@ -75,14 +75,6 @@ export const Integration = {
         "name",
         "type",
         "enabled",
-        "syncing",
-        "role_id",
-        "enable_emoticons",
-        "expire_behavior",
-        "expire_grace_period",
-        "account",
-        "synced_at",
-        "subscriber_count",
-        "revoked"
+        "account"
     ]
 };

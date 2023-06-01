@@ -42,8 +42,6 @@ export const SelectMenu = {
     },
     "required": [
         "type",
-        "custom_id",
-        "options",
-        "channel_types"
+        "custom_id"
     ]
 };

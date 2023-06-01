@@ -24,10 +24,7 @@ export const ThreadMember = {
         }
     },
     "required": [
-        "id",
-        "user_id",
         "join_timestamp",
-        "flags",
-        "member"
+        "flags"
     ]
 };

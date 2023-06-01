@@ -166,12 +166,9 @@ export const Message = {
         "mention_everyone",
         "mentions",
         "mention_roles",
-        "mention_channels",
         "attachments",
         "embeds",
         "pinned",
-        "type",
-        "referenced_message",
-        "components"
+        "type"
     ]
 };

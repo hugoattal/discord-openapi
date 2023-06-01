@@ -19,7 +19,6 @@ export const MessageComponentData = {
     },
     "required": [
         "custom_id",
-        "component_type",
-        "values"
+        "component_type"
     ]
 };

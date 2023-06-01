@@ -17,8 +17,5 @@ export const MessageReference = {
             "type": "boolean",
             "description": "when sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true"
         }
-    },
-    "required": [
-        "channel_id"
-    ]
+    }
 };

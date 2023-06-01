@@ -36,7 +36,6 @@ export const ApplicationCommandData = {
     "required": [
         "id",
         "name",
-        "type",
-        "options"
+        "type"
     ]
 };

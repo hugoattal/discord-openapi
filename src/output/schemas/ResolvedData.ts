@@ -25,9 +25,5 @@ export const ResolvedData = {
             "$ref": "#/components/schemas/Attachment",
             "description": "the ids and attachment objects"
         }
-    },
-    "required": [
-        "members",
-        "channels"
-    ]
+    }
 };

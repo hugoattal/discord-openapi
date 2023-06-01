@@ -72,7 +72,6 @@ export const GuildScheduledEvent = {
         "id",
         "guild_id",
         "channel_id",
-        "creator_id",
         "name",
         "scheduled_start_time",
         "scheduled_end_time",

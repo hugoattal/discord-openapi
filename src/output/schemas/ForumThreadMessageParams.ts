@@ -47,10 +47,6 @@ export const ForumThreadMessageParams = {
         }
     },
     "required": [
-        "content",
-        "embeds",
-        "components",
-        "sticker_ids",
         "files"
     ]
 };

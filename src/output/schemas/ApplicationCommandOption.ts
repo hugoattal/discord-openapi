@@ -70,7 +70,6 @@ export const ApplicationCommandOption = {
     "required": [
         "type",
         "name",
-        "description",
-        "autocomplete"
+        "description"
     ]
 };

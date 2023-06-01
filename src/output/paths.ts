@@ -186,7 +186,6 @@ export const paths = {
                                 "name",
                                 "event_type",
                                 "trigger_type",
-                                "trigger_metadata",
                                 "actions"
                             ]
                         }
@@ -309,7 +308,6 @@ export const paths = {
                             "required": [
                                 "name",
                                 "event_type",
-                                "trigger_metadata",
                                 "actions",
                                 "enabled",
                                 "exempt_roles",
@@ -577,14 +575,7 @@ export const paths = {
                                     "type": "integer",
                                     "description": "[Message flags](#DOCS_RESOURCES_CHANNEL/message-object-message-flags) combined as a [bitfield](https://en.wikipedia.org/wiki/Bit_field) (only `SUPPRESS_EMBEDS` and `SUPPRESS_NOTIFICATIONS` can be set)"
                                 }
-                            },
-                            "required": [
-                                "content",
-                                "embeds",
-                                "components",
-                                "sticker_ids",
-                                "files"
-                            ]
+                            }
                         }
                     }
                 },
@@ -1674,7 +1665,6 @@ export const paths = {
                             },
                             "required": [
                                 "name",
-                                "auto_archive_duration",
                                 "message"
                             ]
                         }
@@ -4312,12 +4302,9 @@ export const paths = {
                                 }
                             },
                             "required": [
-                                "channel_id",
-                                "entity_metadata",
                                 "name",
                                 "privacy_level",
                                 "scheduled_start_time",
-                                "scheduled_end_time",
                                 "entity_type"
                             ]
                         }
@@ -4441,12 +4428,7 @@ export const paths = {
                                     "type": "object",
                                     "description": "the cover image of the scheduled event"
                                 }
-                            },
-                            "required": [
-                                "channel_id",
-                                "scheduled_end_time",
-                                "entity_type"
-                            ]
+                            }
                         }
                     }
                 },
@@ -4891,8 +4873,7 @@ export const paths = {
                             },
                             "required": [
                                 "channel_id",
-                                "topic",
-                                "send_start_notification"
+                                "topic"
                             ]
                         }
                     }

@@ -55,7 +55,6 @@ export const Attachment = {
         "filename",
         "size",
         "url",
-        "proxy_url",
-        "ephemeral"
+        "proxy_url"
     ]
 };

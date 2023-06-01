@@ -56,8 +56,6 @@ export const Webhook = {
         "channel_id",
         "name",
         "avatar",
-        "application_id",
-        "source_guild",
-        "source_channel"
+        "application_id"
     ]
 };

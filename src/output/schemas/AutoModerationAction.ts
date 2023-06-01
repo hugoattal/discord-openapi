@@ -11,7 +11,6 @@ export const AutoModerationAction = {
         }
     },
     "required": [
-        "type",
-        "metadata"
+        "type"
     ]
 };
